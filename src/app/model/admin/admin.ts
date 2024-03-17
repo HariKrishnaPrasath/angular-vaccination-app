@@ -8,3 +8,4 @@ export class Admin {
         public adminType: string
         ) { }
 }
+//admin

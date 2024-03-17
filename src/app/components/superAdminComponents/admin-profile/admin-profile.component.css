@@ -1,0 +1,64 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+background-image: url('https://i.pinimg.com/originals/a9/c1/aa/a9c1aa274ca21ea8c636912aea7b2b5e.jpg');
+
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97.5vh;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 60%; /* Set the width to 60% for a medium-sized card */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: 20px auto; /* Center the card horizontally */
+    animation: fadeIn 1s ease;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    animation: slideIn 1s ease;
+}
+
+h4 {
+    color: #333;
+    font-size: 18px;
+    animation: fadeIn 1s ease;
+}
+
+.highlight {
+    color: #ff6b6b; /* Change the color to your preference */
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
