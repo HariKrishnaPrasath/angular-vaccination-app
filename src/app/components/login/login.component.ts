@@ -21,6 +21,35 @@ export class LoginComponent {
   loginComponent: Login = new Login();
   loginerror: string = ''
   loginin() {
+// <<<<<<< HEAD
+   
+//     this.loginComponent.email=this.email
+//     this.loginComponent.password=this.password
+//     if(this.loginComponent.email.charAt(0)=='&'){
+//     this.adminService.login(this.loginComponent).subscribe(
+//       {
+//         next: (data) => {
+//           sessionStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
+//           this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
+//         },
+//         error: (err) => {
+//           console.log('vbnjk')
+//           this.loginerror=err.error
+//         },
+//         complete: () => {
+//           console.log("Server completed sending data.");
+//         }
+//       }
+//     )
+    
+//   }
+//   else if(this.loginComponent.email.charAt(0)=='$'){
+//     this.adminService.login(this.loginComponent).subscribe(
+//       {
+//         next: (data) => {
+//           sessionStorage.setItem("Admin",JSON.stringify(this.loginComponent))
+//           this.router.navigateByUrl("/admin/"+this.loginComponent.email)
+// =======
 
     this.loginComponent.email = this.email
     this.loginComponent.password = this.password

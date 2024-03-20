@@ -1,0 +1,20 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+.bg{
+    background-image:url("https://www.gannett-cdn.com/-mm-/55fa331465d3ec0ad38983ec53a368f2cd7c641a/c=0-54-2213-1299/local/-/media/2020/11/30/USATODAY/usatsports/MotleyFool-TMOT-4969db0a-vaccine-shot.jpg?width=2213&height=1245&fit=crop&format=pjpg&auto=webp");    
+    height: 108%;
+    width: 100%;
+}
