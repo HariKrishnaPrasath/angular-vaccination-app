@@ -1,1 +1,58 @@
-<p>manage-appointment works!</p>
+<div class="row justify-content-between">
+    <div class="col-md-4">
+        <form class="example">
+            <input type="text" placeholder="Search.." name="search">
+            <button><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+<div style="margin-top: 5%;">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Sno.</th>
+            <th scope="col">Patient id</th>
+            <th scope="col">Patient name</th>
+            <th scope="col">appointment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of patientList;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{data.patientId}}</td>
+            <td>{{data.patientName}}</td>
+            <td><button type="default" (click)="checkAppointment(data)">check appointments</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<div class="overlay" *ngIf="addStatus">
+  <div class="card">
+    <a style="cursor: pointer;color:red;text-align: right;" (click)="addStatus=false" ><u>x</u></a>
+    <div style="margin-top: 5%;">
+      <table class="table table-hover">
+          <thead> 
+            <tr>
+              <th scope="col">Sno</th>
+              <th scope="col">Start-End Time</th>
+              <th scope="col">Vaccine status</th>
+              <th scope="col">Vaccine</th>
+              <th scope="col">booking date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of newPatient.appointment;">
+              <th scope="row">{{appointment.bookingId}}</th>
+              <td>{{appointment.slot}}</td>
+              <td>{{appointment.vaccineStatus}}</td>
+              <td>{{appointment.vaccine}}</td>
+              <td>{{appointment.bookingDate}}</td>
+  
+            </tr>
+            
+          </tbody>
+        </table>
+  </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

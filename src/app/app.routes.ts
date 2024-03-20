@@ -16,11 +16,13 @@ import { CreateSlotComponent } from './components/adminComponent/create-slot/cre
 import { CreateVaccineComponent } from './components/adminComponent/create-vaccine/create-vaccine.component';
 import { ManageAppointmentComponent } from './components/adminComponent/manage-appointment/manage-appointment.component';
 import { ManageCenterComponent } from './components/adminComponent/manage-center/manage-center.component';
-
+import { PatientLoginComponent } from './components/patient-login/patient-login.component';
+import { BaseComponent } from './components/patientComponent/base/base.component';
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     {
-        path: 'user/:email', component: HomeComponent, children: [
+        path: 'user/:email', component: BaseComponent, children: [
+            { path: 'home',component:HomeComponent},
             { path: 'profile', component: ProfileComponent },
             { path: 'certificate', component: CertificatesComponent },
             { path: 'center', component: CenterComponent },
@@ -44,6 +46,6 @@ export const routes: Routes = [
             { path: 'manageAppointments', component: ManageAppointmentComponent },
             { path: 'manageCenter', component: ManageCenterComponent }
         ]
-    }
-
+    },
+    {path:'patient/login', component:PatientLoginComponent}
 ];

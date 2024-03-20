@@ -24,7 +24,7 @@ export class LoginComponent {
    
     this.loginComponent.email=this.email
     this.loginComponent.password=this.password
-    if(this.loginComponent.email.charAt(0)=='$'){
+    if(this.loginComponent.email.charAt(0)=='&'){
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
@@ -42,7 +42,7 @@ export class LoginComponent {
     )
     
   }
-  else if(this.loginComponent.email.charAt(0)=='&'){
+  else if(this.loginComponent.email.charAt(0)=='$'){
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
