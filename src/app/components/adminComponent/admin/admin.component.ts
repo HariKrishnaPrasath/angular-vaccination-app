@@ -12,9 +12,10 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 })
 export class AdminComponent {
   email: string = '';
+
   constructor(private router: Router, private activatedRouter: ActivatedRoute) {
     this.email = this.activatedRouter.snapshot.paramMap.get('email')!;
-    this.router.navigateByUrl('admin/' + this.email + '/manageAppointments');
+    this.router.navigateByUrl('admin/' + this.email + '/createSlot');
   }
   logout(): void {
     this.router.navigateByUrl('');

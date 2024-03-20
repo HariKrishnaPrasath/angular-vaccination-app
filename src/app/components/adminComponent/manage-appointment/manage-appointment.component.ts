@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './manage-appointment.component.css'
 })
 export class ManageAppointmentComponent {
-
 }

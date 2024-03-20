@@ -20,20 +20,30 @@ export class AdminProfileComponent {
   deleteAdminSuccess: string = ''
   deleteAdminError: string = ''
   updateStatus: boolean = false
-  constructor(private adminService:AdminService,private router: Router){
-  var obj=localStorage.getItem("Admin");
-  console.log(obj);
+  // constructor(private adminService:AdminService,private router: Router){}
+  // var obj=localStorage.getItem("Admin");
+  // console.log(obj);
+  // details: Admin = new Admin(0, '', '', '', '', '')
+  constructor(private adminService: AdminService,private router: Router) {
+
+    var obj = sessionStorage.getItem("Admin");
     var data;
-    if(obj !=null){
-      data=JSON.parse(obj)
+    if (obj != null) {
+      data = JSON.parse(obj)
+      console.log(data);
     }
     this.adminService.getAdminByEmail(data.email).subscribe(
       {
         next: (data) => {
-          this.details=data
+          
+          this.details = data
+          console.log(data);
+          
         },
         error: (err) => {
           console.log("Error");
+          console.log("Hello");
+          
         },
         complete: () => {
           console.log("Server completed sending data.");

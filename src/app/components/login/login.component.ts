@@ -13,53 +13,78 @@ import { AdminService } from '../../service/admin/admin.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private adminService:AdminService,private router:Router){
+  constructor(private adminService: AdminService, private router: Router) {
 
   }
   email: string = "";
   password: string = "";
-  loginComponent:Login=new Login();
-  loginerror:string=''
+  loginComponent: Login = new Login();
+  loginerror: string = ''
   loginin() {
-   
-    this.loginComponent.email=this.email
-    this.loginComponent.password=this.password
-    if(this.loginComponent.email.charAt(0)=='$'){
+
+    this.loginComponent.email = this.email
+    this.loginComponent.password = this.password
+    // if(this.loginComponent.email.charAt(0)=='$'){
+    // this.adminService.login(this.loginComponent).subscribe(
+    //   {
+    //     next: (data) => {
+    //       localStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
+    //       this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
+    //     },
+    //     error: (err) => {
+    //       console.log('vbnjk')
+    //       this.loginerror=err.error
+    //     },
+    //     complete: () => {
+    //       console.log("Server completed sending data.");
+    //     }
+    //   }
+    // )
+    // if(this.loginComponent.email.charAt(0)=='$'){
+    // this.adminService.login(this.loginComponent).subscribe(
+    //   {
+    //     next: (data) => {
+    //       sessionStorage.setItem("superAdmin",JSON.stringify(data))
+    //       this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
+    //     },
+    //     error: (err) => {
+    //       console.log('vbnjk')
+    //       this.loginerror=err.error
+    //     },
+    //     complete: () => {
+    //       console.log("Server completed sending data.");
+    //     }
+    //   }
+    // )
+
+    // }
+    // else if(this.loginComponent.email.charAt(0)=='&'){
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          localStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
-          this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
-        },
-        error: (err) => {
-          console.log('vbnjk')
-          this.loginerror=err.error
-        },
-        complete: () => {
-          console.log("Server completed sending data.");
-        }
-      }
-    )
-    
-  }
-  else if(this.loginComponent.email.charAt(0)=='&'){
-    this.adminService.login(this.loginComponent).subscribe(
-      {
-        next: (data) => {
-          localStorage.setItem("Admin",JSON.stringify(this.loginComponent))
-          this.router.navigateByUrl("/admin/"+this.loginComponent.email)
+          localStorage.setItem("superAdmin", JSON.stringify(this.loginComponent))
+          sessionStorage.setItem("superAdmin", JSON.stringify(data))
+          this.router.navigateByUrl("/superAdmin/" + this.loginComponent.email)
         },
         error: (err) => {
           console.log("okok");
-          this.loginerror=err.error
+          this.loginerror = err.error
+          console.log(err);
         },
         complete: () => {
           console.log("Server completed sending data.");
         }
       }
     )
+    // }
   }
-}
-checkBox:Boolean=false
+  checkBox: Boolean = false
 
+  // selected: string = "";
+  // login() {
+  //   this.router.navigateByUrl('/superAdmin/' + this.email);
+  // }
+  // submit() {
+  //   console.log(this.selected);
+  // }
 }
