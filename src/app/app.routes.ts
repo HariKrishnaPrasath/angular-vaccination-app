@@ -4,7 +4,10 @@ import { ProfileComponent } from './components/patientComponent/profile/profile.
 import { CenterComponent } from './components/patientComponent/center/center.component';
 import { MyappointmentsComponent } from './components/patientComponent/myappointments/myappointments.component';
 import { AdminDashboardComponent } from './components/superAdminComponents/admin-dashboard/admin-dashboard.component';
-import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
+// <<<<<<< Updated upstream
+// import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
+// =======
+import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
 import { AddVaccineComponent } from './components/superAdminComponents/add-vaccine/add-vaccine.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';

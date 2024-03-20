@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperAdminProfileComponent } from './admin-profile.component';
+import { SuperAdminProfileComponent } from './super-admin-profile.component';
 
 describe('AdminProfileComponent', () => {
   let component: SuperAdminProfileComponent;
@@ -21,4 +21,3 @@ describe('AdminProfileComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
