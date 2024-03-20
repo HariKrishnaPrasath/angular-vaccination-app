@@ -1,1 +1,83 @@
-<p>add-admin works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row justify-content-between">
+    <div class="col-md-4">
+        <img class="col-md-4" style="float:left;width: 25%;"
+    src="https://static.vecteezy.com/system/resources/previews/000/290/610/original/administration-vector-icon.jpg">
+        <h2
+            style="font-style: italic;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            ADMIN MANAGEMENT</h2><br>
+        <form class="example">
+            <input *ngIf="emailStatus==true" style="float: left;" placeholder="Search.." name="search"
+                [(ngModel)]="searchString">
+            <input *ngIf="idStatus==true" type="number" placeholder="Search.." name="search" [(ngModel)]="searchString">
+            <button (click)="searchAdmin()"><i class="fa fa-search"></i></button>
+        </form>
+        <input type="radio" id="html" name="fav_language" (change)="idStatus=true;emailStatus=false">
+        <label for="html" style="margin-right: 15px;margin-top: 10px; margin-left: 5px;">Id</label>
+        <input type="radio" id="css" name="fav_language" (change)="idStatus=false;emailStatus=true">
+        <label for="css" style="padding-left: 5px;">Email</label><br>
+    </div>
+    <div class="col-md-4">
+        <button (click)="addStatus=true" style="margin-top: 110px;float: right;margin-right: 70px;" type="button"
+            class="btn btn-primary btn-sm">+ Add Admin</button>
+    </div>
+    <div class="overlay" *ngIf="addStatus==true">
+        <form class="card">
+            <button type="button" class="btn-close" aria-label="Close" style="text-align: right;"(click)="addStatus=false;"></button>
+              <h2 style="text-align: center; font-family: 'Times New Roman', Times, serif;">ADD ADMIN</h2>
+            <label for="email" style="color: cornflowerblue;">Email</label>
+            <input type="text" name="email" placeholder="Email" [(ngModel)]="adminDetails.email">
+            <br>
+            <label name="Phone" style="color: cornflowerblue;">Phone No</label>
+            <input type="number" name="Phone" placeholder="Phone No" [(ngModel)]="adminDetails.phoneNumber" />
+            <br>
+            <label name="adminName" style="color: cornflowerblue;">AdminName</label>
+            <input type="text" name="adminName" placeholder="Admin Name" [(ngModel)]="adminDetails.adminName" />
+            <br>
+            <label name="password" style="color: cornflowerblue;">Password</label>
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="adminDetails.password" />
+            <br>
+            <label name="type" style="color: cornflowerblue;">Admin Type</label>
+            <input type="text" name="type" placeholder="Admin Type" [(ngModel)]="adminDetails.adminType" />
+            <br>
+            <br>
+            <button class="btn btn-primary btn-sm" (click)="addAdmin();addStatus=false">Submit</button>
+            </form>
+    </div>
+</div>
+<br>
+<h4 *ngIf="deleteAdminSuccess.length>0" style="color: lightgreen;font-family: 'Times New Roman', Times, serif;">
+    {{deleteAdminSuccess}}</h4>
+<h4 *ngIf="deleteAdminError.length>0" style="color: red;font-family: 'Times New Roman', Times, serif;">
+    {{deleteAdminError}}</h4>
+<h4 *ngIf="addAdminSuccess.length>0" style="color: #2ecc71;font-family: 'Times New Roman', Times, serif;">
+    {{addAdminSuccess}}</h4>
+<h4 *ngIf="addAdminError.length>0" style="color: #e74c3c;font-family: 'Times New Roman', Times, serif;">
+    {{addAdminError}}</h4>
+<div style="margin-top: 5%;">
+    <h4 *ngIf="searchError.length>0" style="color: red;font-family: 'Times New Roman', Times, serif;">{{searchError}}
+    </h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">ADMIN TYPE</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PHONE-NO</th>
+                <th scope="col">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of  accounts;">
+                <th scope="row">{{account.adminId}}</th>
+                <td>{{account.adminName}}</td>
+                <td>{{account.adminType}}</td>
+                <td>{{account.email}}</td>
+                <td>{{account.phoneNumber}}</td>
+                <td><button class="btn btn-primary btn-sm" style="background-color: red;" (click)="deleteAdmin(account)">DELETE</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
