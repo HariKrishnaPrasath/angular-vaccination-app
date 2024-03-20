@@ -28,7 +28,7 @@ export class LoginComponent {
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          sessionStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
+          localStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
           this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
         },
         error: (err) => {
@@ -46,11 +46,12 @@ export class LoginComponent {
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          sessionStorage.setItem("Admin",JSON.stringify(this.loginComponent))
+          localStorage.setItem("Admin",JSON.stringify(this.loginComponent))
           this.router.navigateByUrl("/admin/"+this.loginComponent.email)
         },
         error: (err) => {
           console.log("okok");
+          this.loginerror=err.error
         },
         complete: () => {
           console.log("Server completed sending data.");

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminProfileComponent } from './admin-profile.component';
+import { SuperAdminProfileComponent } from './admin-profile.component';
 
 describe('AdminProfileComponent', () => {
-  let component: AdminProfileComponent;
-  let fixture: ComponentFixture<AdminProfileComponent>;
+  let component: SuperAdminProfileComponent;
+  let fixture: ComponentFixture<SuperAdminProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminProfileComponent]
+      imports: [SuperAdminProfileComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AdminProfileComponent);
+    fixture = TestBed.createComponent(SuperAdminProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

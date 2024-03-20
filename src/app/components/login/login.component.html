@@ -1,4 +1,4 @@
-<h1 style="margin-top:5px;background-color: lightcoral;text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: white;">VACCINATION BOOKING SITE</h1>
+<h1 style="margin-top:5px;background-color: lightcoral;text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: white;">VACCINE BOOKING SITE</h1>
 <img style="margin-top: 5px;margin-bottom: 5px; width: 100%; height: 500px;
 object-fit: fill;" src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/12/07193945/New-Normal-01-scaled.jpg">
 <div class="what">
@@ -16,21 +16,10 @@ object-fit: fill;" src="https://blogassets.leverageedu.com/blog/wp-content/uploa
         <input type="text" placeholder="Username/Email" name="email" required="Please enter the email" [(ngModel)]="email">
         <input type="password" placeholder="Password" name="password" required="Please provide password" [(ngModel)]="password">
         <button (click)="loginin()">Login</button>
-        <a style="cursor: pointer;" (click)="checkBox=true"><u>Sign Up</u></a>
     </form>
     <p style="color: red;">
       {{loginerror}}
     </p>
-
-    <form *ngIf="checkBox">
-      <h1 style="font-family: monospace;">New User</h1><br>
-      <input type="text" placeholder="Name" >
-      <input type="text" placeholder="Username/Email" name="email" >
-      <input type="text" placeholder="Phone-No">
-      <input type="password" placeholder="Password" name="password">
-      <button>Sign Up</button>
-      <a style="cursor: pointer;" (click)="checkBox=false"><u>Login</u></a>
-  </form>
 </div>
 <div class="news">
 

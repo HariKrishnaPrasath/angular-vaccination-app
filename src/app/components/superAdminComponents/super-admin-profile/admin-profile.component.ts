@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Admin } from '../../../model/admin/admin';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Login } from '../../../model/Login/login';
 import { AdminService } from '../../../service/admin/admin.service';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Admin } from '../../../model/admin/admin';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-admin-profile',
   standalone: true,
@@ -12,28 +12,30 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './admin-profile.component.html',
   styleUrl: './admin-profile.component.css'
 })
-export class AdminProfileComponent {
-  details:Admin=new Admin(0,'','','','','')
+
+export class SuperAdminProfileComponent {
+  details: Admin = new Admin(0, '', '', '', '', '')
   updateDetails: Admin = new Admin()
   updateAdminSuccess: string = ''
   updateAdminError: string = ''
   deleteAdminSuccess: string = ''
   deleteAdminError: string = ''
   updateStatus: boolean = false
-  constructor(private adminService:AdminService,private router: Router){
-  var obj=localStorage.getItem("Admin");
-  console.log(obj);
+  constructor(private adminService: AdminService, private router: Router, private activatedRouter: ActivatedRoute) {
+    var obj = localStorage.getItem("superAdmin");
     var data;
-    if(obj !=null){
-      data=JSON.parse(obj)
+    if (obj != null) {
+      data = JSON.parse(obj)
     }
     this.adminService.getAdminByEmail(data.email).subscribe(
       {
         next: (data) => {
-          this.details=data
+          this.details = data
+
+          this.updateDetails = { ...this.details }
         },
         error: (err) => {
-          console.log("Error");
+          console.log("okok");
         },
         complete: () => {
           console.log("Server completed sending data.");
@@ -41,6 +43,7 @@ export class AdminProfileComponent {
       }
     )
   }
+
   delete() {
     if (confirm("Do you want to Delete Account.Once you deleted you can't get back"))
       this.adminService.deleteAdmin(this.details.adminId!).subscribe(
@@ -98,3 +101,5 @@ export class AdminProfileComponent {
   }
 
 }
+
+
