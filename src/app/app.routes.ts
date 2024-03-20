@@ -4,7 +4,10 @@ import { ProfileComponent } from './components/patientComponent/profile/profile.
 import { CenterComponent } from './components/patientComponent/center/center.component';
 import { MyappointmentsComponent } from './components/patientComponent/myappointments/myappointments.component';
 import { AdminDashboardComponent } from './components/superAdminComponents/admin-dashboard/admin-dashboard.component';
-import { AdminProfileComponent } from './components/superAdminComponents/admin-profile/admin-profile.component';
+// <<<<<<< Updated upstream
+// import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
+// =======
+import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
 import { AddVaccineComponent } from './components/superAdminComponents/add-vaccine/add-vaccine.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';
@@ -18,6 +21,9 @@ import { ManageAppointmentComponent } from './components/adminComponent/manage-a
 import { ManageCenterComponent } from './components/adminComponent/manage-center/manage-center.component';
 import { PatientLoginComponent } from './components/patient-login/patient-login.component';
 import { BaseComponent } from './components/patientComponent/base/base.component';
+
+import { AdminProfileComponent } from './components/adminComponent/admin-profile/admin-profile.component';
+
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     {
@@ -32,7 +38,7 @@ export const routes: Routes = [
     {
         path: 'superAdmin/:email', component: SuperAdminComponent, children: [
             { path: 'adminDashboard', component: AdminDashboardComponent },
-            { path: 'adminProfile', component: AdminProfileComponent },
+            { path: 'superAdminProfile', component: SuperAdminProfileComponent },
             { path: 'addCenter', component: AddCenterComponent },
             { path: 'addVaccine', component: AddVaccineComponent },
             { path: 'addAdmin', component: AddAdminComponent }

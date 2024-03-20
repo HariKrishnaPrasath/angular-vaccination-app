@@ -1,0 +1,14 @@
+.fixed-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    overflow-y: auto;
+    background-color: #343a40; /* Set your desired background color */
+}
+.flex-grow-1 {
+    flex: 1;
+    margin-left: 280px; /* Same as the width of the sidebar */
+  padding: 0px 5px; /* Add padding as needed */
+}

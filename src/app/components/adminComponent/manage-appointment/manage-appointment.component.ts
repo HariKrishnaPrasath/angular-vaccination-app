@@ -16,6 +16,7 @@ export class ManageAppointmentComponent {
 checkAppointment(patient: Patient) {
   this.addStatus = true;
   this.newPatient = {...patient};
+
 }
   patientList:Patient[]=[];
   newPatient: Patient=new Patient();

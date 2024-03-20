@@ -1,0 +1,19 @@
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(64, 63, 63, 0.1);
+    padding: 20px;
+    width: 100%; /* Set the width to 60% for a medium-sized card */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: 10px auto; /* Center the card horizontally */
+    animation: fadeIn 1s ease;
+    float: left;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
