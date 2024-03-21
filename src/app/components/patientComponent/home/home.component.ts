@@ -12,4 +12,13 @@ import { ActivatedRoute, ROUTER_INITIALIZER, Router, RouterLink, RouterOutlet } 
 })
 export class HomeComponent {
 
+  email: string = "";
+  constructor(private router:Router, private activatedRouter: ActivatedRoute) {
+    this.email = this.activatedRouter.snapshot.paramMap.get('email')!;
+    //console.log("Check Email Data="+this.email)
+    this.router.navigateByUrl('user/'+ this.email + '/profile');
+  }
+  logout() : void {
+    this.router.navigateByUrl('');
+  }
 }

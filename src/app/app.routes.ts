@@ -18,6 +18,9 @@ import { CreateSlotComponent } from './components/adminComponent/create-slot/cre
 import { CreateVaccineComponent } from './components/adminComponent/create-vaccine/create-vaccine.component';
 import { ManageAppointmentComponent } from './components/adminComponent/manage-appointment/manage-appointment.component';
 import { ManageCenterComponent } from './components/adminComponent/manage-center/manage-center.component';
+import { Component } from '@angular/core';
+import { AllCentersComponent } from './components/superAdminComponents/all-centers/all-centers.component';
+import { UpdateCenterComponent } from './components/superAdminComponents/update-center/update-center.component';
 
 import { PatientLoginComponent } from './components/patient-login/patient-login.component';
 import { BaseComponent } from './components/patientComponent/base/base.component';
@@ -45,6 +48,13 @@ export const routes: Routes = [
     {
         path: 'superAdmin/:email', component: SuperAdminComponent, children: [
             { path: 'adminDashboard', component: AdminDashboardComponent },
+
+            { path: 'adminProfile', component: AdminProfileComponent },
+            { path: 'addCenter', component: AddCenterComponent},
+            { path: 'updateCenter/:id', component: UpdateCenterComponent},
+            { path: 'allCenters', component: AllCentersComponent},
+            { path: 'addVaccine', component: AddVaccinesComponent },
+
             { path: 'superAdminProfile', component: SuperAdminProfileComponent },
             { path: 'addCenter', component: AddCenterComponent },
             {path: 'allVaccines', component: AllVaccinesComponent},
@@ -64,6 +74,8 @@ export const routes: Routes = [
             { path: 'manageAppointments', component: ManageAppointmentComponent },
             { path: 'manageCenter', component: ManageCenterComponent }
         ]
+
     },
     {path:'patient/login', component:PatientLoginComponent}
+
 ];

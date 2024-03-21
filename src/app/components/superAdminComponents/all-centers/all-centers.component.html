@@ -4,6 +4,7 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="search center" [(ngModel)]="query" aria-label="Recipient's username" aria-describedby="button-addon2">
     </div>
+    <button type="button" class="btn btn-primary" (click)="addCenter()">+ Add center</button>
 </div>
 
 <table class="table table-hover">
@@ -13,21 +14,18 @@
         <th scope="col">Center Name</th>
         <th scope="col">Address</th>
         <th scope="col">Contact</th>
-        <th scope="col">State</th>
-        <th scope="col">Pincode</th>
         <th></th>
-        
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let vaccineCenter of centers | search:query">
+      <tr *ngFor="let vaccineCenter of centerArray | search:query">
         <th scope="row">{{vaccineCenter.centerId}}</th>
         <td>{{vaccineCenter.centerName}}</td>
         <td>{{vaccineCenter.address}}</td>
         <td>{{vaccineCenter.contactNumber}}</td>
-        <td>{{vaccineCenter.state}}</td>
-        <td>{{vaccineCenter.pincode}}</td>
-        <td><button type="button" class="btn btn-primary" (click)="displayVaccines(vaccineCenter)">Available Vaccines</button></td>
+        <td><button type="button" class="btn btn-primary" (click)="updateCenter(vaccineCenter)">Update</button></td>
+        <td><button type="button" class="btn btn-primary" (click)="deleteCenter(vaccineCenter.centerId)">Delete</button></td>
       </tr>
     </tbody>
   </table>

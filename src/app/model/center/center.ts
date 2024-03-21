@@ -2,6 +2,7 @@ import { Admin } from "../admin/admin";
 import { Slot } from "../slot/slot";
 import { Vaccine } from "../vaccine/vaccine";
 
+
 export class Center {
     constructor(
         public centerId?: number,
@@ -13,6 +14,6 @@ export class Center {
         public contactNumber?: string,
         public vaccineMap?:Vaccine[],
         public slots?: Slot[],
-        public admin?: Admin,
+        public admin?: Admin
     ) {}
 }

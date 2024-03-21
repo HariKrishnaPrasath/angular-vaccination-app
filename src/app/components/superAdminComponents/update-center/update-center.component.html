@@ -14,6 +14,8 @@
         padding-right: 100px;
     }
 </style>
+
+
 <div>
     <br><h5> Update center:</h5>
     <div class="ex1">
@@ -45,6 +47,13 @@
                     <input type="text" id="pincode" name="pincode" [(ngModel)]="center.pincode" required #pincodeField="ngModel" ><br>
                     <div class="req" *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">Center pincode is required.</div>
                 </div>
+
+                <label for="admin">Admin</label><br>
+                <!-- <input type="text" id="admin" name="admin" [(ngModel)]="newCenter.district" placeholder="Enter District"><br> -->
+                
+                <select class="form-select" [(ngModel)]="center.admin!.adminId" name="selectedAdmin">
+                    <option *ngFor="let admin of adminList" [ngValue]="admin.adminId">{{admin.adminName}}</option>
+                  </select>
 
                 <!--
                 <div class="form-group">
