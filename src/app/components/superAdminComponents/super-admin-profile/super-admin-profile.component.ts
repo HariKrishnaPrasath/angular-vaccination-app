@@ -7,11 +7,11 @@ import { Admin } from '../../../model/admin/admin';
   selector: 'app-admin-profile',
   standalone: true,
   imports: [],
-  templateUrl: './admin-profile.component.html',
-  styleUrl: './admin-profile.component.css'
+  templateUrl: './super-admin-profile.component.html',
+  styleUrl: './super-admin-profile.component.css'
 })
 
-export class AdminProfileComponent {
+export class SuperAdminProfileComponent {
   details:Admin=new Admin(0,'','','','','')
   constructor(private adminService:AdminService){
   var obj=sessionStorage.getItem("superAdmin");

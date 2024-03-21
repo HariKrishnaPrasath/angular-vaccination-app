@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './create-vaccine.component.css'
 })
 export class CreateVaccineComponent {
+  
 
 }

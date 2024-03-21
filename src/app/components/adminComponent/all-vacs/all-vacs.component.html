@@ -1,0 +1,29 @@
+<br>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="search Vaccine"  aria-label="Vaccine name" aria-describedby="button-addon2">
+    </div>
+    <button type="button" class="btn btn-primary" >+ Add Vaccine</button>
+</div>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Vaccine Name</th>
+        <th scope="col">Manufacturing Date</th>
+        <th scope="col">Expiry Date</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--<tr *ngFor="let vaccine of vaccineArray" >-->
+        <th scope="row">{{vaccine.vaccineId}}</th>
+        <td>{{vaccine.vaccineName}}</td>
+        <td>{{vaccine.manufacturingDate}}</td>
+        <td>{{vaccine.expiryDate}}</td>
+        <td>{{vaccine.description}}</td>
+        <!--<td><button type="button" class="btn btn-primary" (click)="updateVaccine(vaccine)">Add</button></td>-->
+        <td><button type="button" class="btn btn-primary" >Remove</button></td>
+      <!--</tr>-->
+    </tbody>
+  </table>

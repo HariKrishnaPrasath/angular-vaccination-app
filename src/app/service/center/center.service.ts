@@ -27,5 +27,8 @@ export class CenterService {
   updateCenterByCenter(center:Center):Observable<any>{
     return this.httpClient.put("http://localhost:8090/center/update",center);
   }
+  getCenterByAdminId(adminId: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8090/center/admin/'+adminId);
+  }
 
 }

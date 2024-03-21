@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,6 +7,8 @@ import { CenterService } from '../../../service/center/center.service';
 import { Center } from '../../../model/center/center';
 import { AdminService } from '../../../service/admin/admin.service';
 import { Admin } from '../../../model/admin/admin';
+import { compileNgModule } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-manage-center',
@@ -14,6 +17,7 @@ import { Admin } from '../../../model/admin/admin';
   templateUrl: './manage-center.component.html',
   styleUrl: './manage-center.component.css'
 })
+
 
 export class ManageCenterComponent implements OnInit {
 updateCenter() {
@@ -58,7 +62,8 @@ throw new Error('Method not implemented.');
           console.log("Server completed sending data.");
         }
       }
-    )
+  
+    );
   }
 
 }

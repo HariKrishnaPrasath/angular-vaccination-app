@@ -19,4 +19,4 @@ export class SuperAdminComponent {
   logout(): void {
     this.router.navigateByUrl('');
   }
-}
+} 

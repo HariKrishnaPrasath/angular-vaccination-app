@@ -4,9 +4,11 @@ import { ProfileComponent } from './components/patientComponent/profile/profile.
 import { CenterComponent } from './components/patientComponent/center/center.component';
 import { MyappointmentsComponent } from './components/patientComponent/myappointments/myappointments.component';
 import { AdminDashboardComponent } from './components/superAdminComponents/admin-dashboard/admin-dashboard.component';
-import { AdminProfileComponent } from './components/superAdminComponents/admin-profile/admin-profile.component';
+// <<<<<<< Updated upstream
+// import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
+// =======
+import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
-import { AddVaccineComponent } from './components/superAdminComponents/add-vaccine/add-vaccine.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';
 import { HomeComponent } from './components/patientComponent/home/home.component';
 import { CertificatesComponent } from './components/patientComponent/certificates/certificates.component';
@@ -20,10 +22,23 @@ import { Component } from '@angular/core';
 import { AllCentersComponent } from './components/superAdminComponents/all-centers/all-centers.component';
 import { UpdateCenterComponent } from './components/superAdminComponents/update-center/update-center.component';
 
+import { PatientLoginComponent } from './components/patient-login/patient-login.component';
+import { BaseComponent } from './components/patientComponent/base/base.component';
+
+import { AdminProfileComponent } from './components/adminComponent/admin-profile/admin-profile.component';
+
+
+import { UpdateVacComponent } from './components/superAdminComponents/update-vac/update-vac.component';
+import { AllVaccinesComponent } from './components/superAdminComponents/all-vaccines/all-vaccines.component';
+import { CreateVacComponent } from './components/superAdminComponents/create-vac/create-vac.component';
+import { AddVaccinesComponent } from './components/adminComponent/add-vaccines/add-vaccines.component';
+import { AllVacsComponent } from './components/adminComponent/all-vacs/all-vacs.component';
+
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     {
-        path: 'user/:email', component: HomeComponent, children: [
+        path: 'user/:email', component: BaseComponent, children: [
+            { path: 'home',component:HomeComponent},
             { path: 'profile', component: ProfileComponent },
             { path: 'certificate', component: CertificatesComponent },
             { path: 'center', component: CenterComponent },
@@ -33,11 +48,19 @@ export const routes: Routes = [
     {
         path: 'superAdmin/:email', component: SuperAdminComponent, children: [
             { path: 'adminDashboard', component: AdminDashboardComponent },
+
             { path: 'adminProfile', component: AdminProfileComponent },
             { path: 'addCenter', component: AddCenterComponent},
             { path: 'updateCenter/:id', component: UpdateCenterComponent},
             { path: 'allCenters', component: AllCentersComponent},
-            { path: 'addVaccine', component: AddVaccineComponent },
+            { path: 'addVaccine', component: AddVaccinesComponent },
+
+            { path: 'superAdminProfile', component: SuperAdminProfileComponent },
+            { path: 'addCenter', component: AddCenterComponent },
+            {path: 'allVaccines', component: AllVaccinesComponent},
+            
+            {path: 'createVac', component:CreateVacComponent},
+            {path: 'updateVac/:id', component: UpdateVacComponent},
             { path: 'addAdmin', component: AddAdminComponent }
         ]
     },
@@ -46,10 +69,13 @@ export const routes: Routes = [
             { path: 'adminProfile', component: AdminProfileComponent },
             { path: 'createSlot', component: CreateSlotComponent },
             { path: 'createVaccine', component: CreateVaccineComponent },
+            {path: 'addVaccines',component:AddVaccinesComponent},
+            {path: 'allVacs',component:AllVacsComponent},
             { path: 'manageAppointments', component: ManageAppointmentComponent },
             { path: 'manageCenter', component: ManageCenterComponent }
         ]
-    }
 
+    },
+    {path:'patient/login', component:PatientLoginComponent}
 
 ];

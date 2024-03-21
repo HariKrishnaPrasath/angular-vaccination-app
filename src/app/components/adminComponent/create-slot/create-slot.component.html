@@ -1,1 +1,156 @@
-<p>create-slot works!</p>
+<div class="row justify-content-between">
+  <div class="col-md-4">
+    <form class="example">
+      <input type="text" placeholder="Search.." name="search">
+      <button><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+      aria-expanded="false" aria-controls="collapseExample">+ Create Slot</button>
+
+  </div>
+</div>
+
+<div class="collapse" id="collapseExample">
+  <div>
+    <form>
+      <div class="divider d-flex align-items-center my-4">
+      </div>
+
+
+      <!-- Name input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="name">Date</label>
+        <input type="date" id="name" class="form-control form-control-md" [(ngModel)]="newSlot.date" name="slotDate"
+          required />
+      </div>
+
+
+      <!-- phone input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="phone">Start Time</label>
+        <input placeholder="hh:mm AM/PM" type="text" id="phone" class="form-control form-control-md"
+          [(ngModel)]="newSlot.startTime" name="startTime" required />
+      </div>
+
+
+      <!-- address input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="address">End Time</label>
+        <input placeholder="hh:mm AM/PM" type="text" id="address" class="form-control form-control-md"
+          [(ngModel)]="newSlot.endTime" name="endTime" required />
+      </div>
+
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label-sm" for="email">Available Slots</label>
+        <input placeholder="10" type="number" id="email" class="form-control form-control-md"
+          [(ngModel)]="newSlot.availableSlots" name="availableSlots" placeholder="10" required />
+      </div>
+
+      <div class="row justify-content-between">
+        <div class="col-md-2 text-center text-lg-start mt-4 pt-2">
+          <button type="button" class="btn btn-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+            (click)="createSlot()">Create</button>
+        </div>
+        <div class="col-md-2 text-center text-lg-start mt-4 pt-2">
+          <button class="btn btn-dark" type="button" style="padding-left: 2.5rem; padding-right: 2.5rem;" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Close</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+<div style="margin-top: 5%;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Start-End Time</th>
+        <th scope="col">Center Name</th>
+        <th scope="col">Available Slots</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let slot of slots; let i = index;">
+        <tr (click)="slotFunc(slot)" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseExample-' + slot.id"
+          aria-expanded="false" aria-controls="'collapseExample-' + slot.id">
+
+          <th scope="row">{{slot.id}}</th>
+          <td>{{slot.startTime}} - {{slot.endTime}}</td>
+          <td>{{slot.center?.centerName}}</td>
+          <td>{{slot.availableSlots}}</td>
+
+        </tr>
+        <ng-container >
+            <td colspan="4">
+              <div class="collapse" id="{{'collapseExample-' + slot.id}}">
+                <div>
+                  <form>
+                    <!-- <div class="divider d-flex align-items-center my-4">
+                    </div> -->
+
+
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="name">Date</label>
+                      <input type="date" id="name" class="form-control form-control-md" [(ngModel)]="updateSlot.date"
+                        name="slotDate" required />
+                    </div>
+
+
+                    <!-- phone input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="phone">Start Time</label>
+                      <input placeholder="hh:mm AM/PM" type="text" id="phone" class="form-control form-control-md"
+                        [(ngModel)]="updateSlot.startTime" name="startTime" required />
+                    </div>
+
+
+                    <!-- address input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="address">End Time</label>
+                      <input placeholder="hh:mm AM/PM" type="text" id="address" class="form-control form-control-md"
+                        [(ngModel)]="updateSlot.endTime" name="endTime" required />
+                    </div>
+
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label-sm" for="email">Available Slots</label>
+                      <input placeholder="10" type="number" id="email" class="form-control form-control-md"
+                        [(ngModel)]="updateSlot.availableSlots" name="availableSlots" placeholder="10"
+                        required />
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="col-md-2 text-center text-lg-start mt-4 pt-2">
+                        <button type="button" class="btn btn-primary"
+                          style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="updateSlotById()">Update</button>
+                      </div>
+                      <div class="col-md-8 text-center text-lg-start mt-4 pt-2">
+                        <button type="button" class="btn btn-danger"
+                          style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="deleteSlotById()">Delete</button>
+                      </div>
+                      <div class="col-md-2 text-center text-lg-start mt-4 pt-2">
+                        <button class="btn btn-dark" style="padding-left: 2.5rem; padding-right: 2.5rem;" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapseExample-' + slot.id"
+                        aria-expanded="false" aria-controls="'collapseExample-' + slot.id">Close</button>
+                          
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </td>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

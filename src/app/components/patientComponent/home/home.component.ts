@@ -11,6 +11,7 @@ import { ActivatedRoute, ROUTER_INITIALIZER, Router, RouterLink, RouterOutlet } 
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
   email: string = "";
   constructor(private router:Router, private activatedRouter: ActivatedRoute) {
     this.email = this.activatedRouter.snapshot.paramMap.get('email')!;
@@ -20,5 +21,4 @@ export class HomeComponent {
   logout() : void {
     this.router.navigateByUrl('');
   }
-
 }

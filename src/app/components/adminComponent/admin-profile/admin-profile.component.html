@@ -8,8 +8,9 @@
     
 </head>
 <body>
+    <h3 style="font-style: italic;font-family: 'Times New Roman', Times, serif;margin-left: 10px;color: chocolate;">Welcome Admin</h3>
     <div class="card">
-        <ul>
+        <ul>   
             <li>
                 <h4>Admin ID: <span class="highlight"> {{details.adminId}}</span></h4>
             </li>
@@ -26,7 +27,32 @@
                 <h4>Admin Type: <span class="highlight"> {{details.adminType}}</span></h4>
             </li>
         </ul>
-        <button style="background-color: green;color: white;width: 100%;">UPDATE</button>
+    <button style="background-color: green;color: white;width: 100%;" (click)="updateStatus=!updateStatus">UPDATE</button>
+        <br>
+        <button style="background-color: red;color: white;width: 100%;" (click)="delete()">DELETE</button>
+    </div>
+    <div class="overlay" *ngIf="updateStatus==true">
+        <form class="card">
+            <h4 *ngIf="updateAdminSuccess.length>0"style="color: #2ecc71; text-align: center;">{{updateAdminSuccess}}</h4>
+            <h4 *ngIf="updateAdminError.length>0"style="color: #e74c3c;text-align: center;">{{updateAdminError}}</h4>
+            <h2 style="text-align: center;">UPDATE ADMIN</h2>
+            <label name="Phone" style="color: cornflowerblue;">Phone No</label>
+            <input type="number" name="Phone" placeholder="{{details.phoneNumber}}"[(ngModel)]="updateDetails.phoneNumber"/>
+            <br>
+            <label name="adminName"style="color: cornflowerblue;">AdminName</label>
+            <input type="text" name="adminName" placeholder="{{details.adminName}}"[(ngModel)]="updateDetails.adminName"/>
+            <br>
+            <label name="password"style="color: cornflowerblue;">Password</label>
+            <input type="password" name="password" placeholder="{{details.password}}"[(ngModel)]="updateDetails.password"/>
+            <br>
+            <label name="type"style="color: cornflowerblue;">Admin Type</label>
+            <input type="text" name="type" placeholder="{{details.adminType}}"[(ngModel)]="updateDetails.adminType"/>
+            <br>
+            <br>
+            <button  style="background-color: green;color: white;width: 100%;" (click)="update()">SUBMIT</button>
+            <br>
+            <button style="width: 100%;background-color: lightslategrey;"(click)="updateStatus=false;updateAdminSuccess='';updateAdminError=''">BACK</button>
+        </form>
     </div>
 </body>
 
