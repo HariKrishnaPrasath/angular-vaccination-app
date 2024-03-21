@@ -18,6 +18,7 @@ export class LoginComponent {
   }
   email: string = "";
   password: string = "";
+
   loginComponent: Login = new Login();
   loginerror: string = ''
   loginin() {
@@ -50,6 +51,9 @@ export class LoginComponent {
 //           sessionStorage.setItem("Admin",JSON.stringify(this.loginComponent))
 //           this.router.navigateByUrl("/admin/"+this.loginComponent.email)
 // =======
+
+  
+
 
     this.loginComponent.email = this.email
     this.loginComponent.password = this.password
@@ -108,7 +112,9 @@ export class LoginComponent {
     // }
   }
   checkBox: Boolean = false
-
+  login() {
+    this.router.navigateByUrl('/Admin/' + this.email);
+  }
   // selected: string = "";
   // login() {
   //   this.router.navigateByUrl('/superAdmin/' + this.email);
