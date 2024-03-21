@@ -16,4 +16,7 @@ export class AdminService {
     getAdminByEmail(email:string):Observable<any>{
       return this.httpClient.get("http://localhost:8090/vaccinationapp/admin/getbyemail/"+email);
     }
+    getAllAdmin(): Observable<any> {
+      return this.httpClient.get('http://localhost:8090/vaccinationapp/admin/getalladmin');
+    }
 }

@@ -1,1 +1,67 @@
-<p>add-center works!</p>
+
+<style>
+    div.ex1 {
+      padding-left: 50px;
+    }
+    div.ex2 {
+      padding-left: 17px;
+    }
+    .button-container {
+        display: flex;
+    }
+    div.req {
+        padding-right: 100px;
+    }
+</style>
+
+
+    <br><h5> Add new center:</h5>
+    <div class="ex1">
+        <div *ngIf="message" class="alert alert-success">
+            <p> {{message}}</p>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            <p> {{errorMessage}}</p>
+        </div>
+        <div>
+            <form #centerForm="ngForm" (ngSubmit)="addCenter()">
+                <div class="form-group">
+                    <label for="name">Center Name</label><br>
+                    <input type="text" id="name" name="name" [(ngModel)]="newCenter.centerName" required #nameField="ngModel" placeholder="Enter center name"><br>
+                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center name is required.</div>
+                </div>
+
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address" [(ngModel)]="newCenter.address" placeholder="Enter address"><br>
+
+                <div class="form-group">
+                    <label for="pincode">Pincode</label><br>
+                    <input type="text" id="pincode" name="pincode" [(ngModel)]="newCenter.pincode" required #pincodeField="ngModel" placeholder="Enter pincode"><br>
+                    <div class="req" *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">Center pincode is required.</div>
+                </div>
+                <label for="district">District</label><br>
+                <input type="text" id="district" name="district" [(ngModel)]="newCenter.district" placeholder="Enter District"><br>
+
+                <label for="admin">Admin</label><br>
+                <!-- <input type="text" id="admin" name="admin" [(ngModel)]="newCenter.district" placeholder="Enter District"><br> -->
+                <select class="form-select" [(ngModel)]="selectedAdmin" name="selectedAdmin">
+                    <option *ngFor="let admin of adminList" [ngValue]="admin">{{admin.adminName}}</option>
+                  </select>
+                <label for="state">State</label><br>
+                <input type="text" id="state" name="state" [(ngModel)]="newCenter.state" placeholder="Enter state"><br>
+
+                <label for="contactNo">Contact Number</label><br>
+                <input type="text" id="contactNo" name="contactNo" [(ngModel)]="newCenter.contactNumber" placeholder="Enter contact no"><br>
+                <br>
+                <div class="button-container">
+                    <button type="button" class="btn btn-warning" (click)="goBackToPrevPage()">back</button>
+                    <div class="ex2">
+                        <button type="submit" class="btn btn-success" [disabled]="centerForm.invalid">Add Center</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
