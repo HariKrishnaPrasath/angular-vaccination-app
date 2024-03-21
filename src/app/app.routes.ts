@@ -9,7 +9,6 @@ import { AdminDashboardComponent } from './components/superAdminComponents/admin
 // =======
 import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
-import { AddVaccineComponent } from './components/superAdminComponents/add-vaccine/add-vaccine.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';
 import { HomeComponent } from './components/patientComponent/home/home.component';
 import { CertificatesComponent } from './components/patientComponent/certificates/certificates.component';
@@ -19,10 +18,18 @@ import { CreateSlotComponent } from './components/adminComponent/create-slot/cre
 import { CreateVaccineComponent } from './components/adminComponent/create-vaccine/create-vaccine.component';
 import { ManageAppointmentComponent } from './components/adminComponent/manage-appointment/manage-appointment.component';
 import { ManageCenterComponent } from './components/adminComponent/manage-center/manage-center.component';
+
 import { PatientLoginComponent } from './components/patient-login/patient-login.component';
 import { BaseComponent } from './components/patientComponent/base/base.component';
 
 import { AdminProfileComponent } from './components/adminComponent/admin-profile/admin-profile.component';
+
+
+import { UpdateVacComponent } from './components/superAdminComponents/update-vac/update-vac.component';
+import { AllVaccinesComponent } from './components/superAdminComponents/all-vaccines/all-vaccines.component';
+import { CreateVacComponent } from './components/superAdminComponents/create-vac/create-vac.component';
+import { AddVaccinesComponent } from './components/adminComponent/add-vaccines/add-vaccines.component';
+import { AllVacsComponent } from './components/adminComponent/all-vacs/all-vacs.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -40,7 +47,10 @@ export const routes: Routes = [
             { path: 'adminDashboard', component: AdminDashboardComponent },
             { path: 'superAdminProfile', component: SuperAdminProfileComponent },
             { path: 'addCenter', component: AddCenterComponent },
-            { path: 'addVaccine', component: AddVaccineComponent },
+            {path: 'allVaccines', component: AllVaccinesComponent},
+            
+            {path: 'createVac', component:CreateVacComponent},
+            {path: 'updateVac/:id', component: UpdateVacComponent},
             { path: 'addAdmin', component: AddAdminComponent }
         ]
     },
@@ -49,6 +59,8 @@ export const routes: Routes = [
             { path: 'adminProfile', component: AdminProfileComponent },
             { path: 'createSlot', component: CreateSlotComponent },
             { path: 'createVaccine', component: CreateVaccineComponent },
+            {path: 'addVaccines',component:AddVaccinesComponent},
+            {path: 'allVacs',component:AllVacsComponent},
             { path: 'manageAppointments', component: ManageAppointmentComponent },
             { path: 'manageCenter', component: ManageCenterComponent }
         ]

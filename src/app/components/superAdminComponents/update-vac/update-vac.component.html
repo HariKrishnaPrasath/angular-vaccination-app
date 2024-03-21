@@ -1,0 +1,62 @@
+<style>
+  div.ex1 {
+    padding-left: 50px;
+  }
+
+  div.ex2 {
+    padding-left: 17px;
+  }
+
+  .button-container {
+    display: flex;
+  }
+
+  div.req {
+    padding-right: 100px;
+  }
+</style>
+<div>
+  <br><h5> Update Vaccine:</h5>
+  <div class="ex1">
+    <div *ngIf="message" class="alert alert-success">
+      <p> {{message}}</p>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      <p> {{errorMessage}}</p>
+    </div>
+    <div>
+      <form #vaccineForm="ngForm">
+        <div class="form-group ">
+          <label for="id">Vaccine id</label><br>
+
+          <input disabled="true" type="number" id="id" name="id" [(ngModel)]="vaccine.vaccineId" required
+            #idField="ngModel"><br>
+
+          <div class="req" *ngIf="idField.invalid && idField.touched" class="alert alert-danger">Vaccine id is required.
+          </div>
+        </div>
+        <div class="form-group ">
+          <label for="vaccineName">Vaccine Name:</label><br>
+          <input type="text" id="vaccineName" [(ngModel)]="vaccine.vaccineName" name="vaccineName" required
+            #nameField="ngModel"><br>
+          <div class="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger"> vaccine name is
+            required.</div>
+        </div>
+
+        <label for="manufacturingDate">Manufacturing Date:</label><br>
+        <input type="date" id="manufacturingDate" [(ngModel)]="vaccine.manufacturingDate" name="manufacturingDate"><br>
+
+        <label for="expiryDate">Expiry Date:</label><br>
+        <input type="date" id="expiryDate" [(ngModel)]="vaccine.expiryDate" name="expiryDate"><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" [(ngModel)]="vaccine.description" name="description" rows="4"></textarea><br>
+
+        <div class="button">
+          <button (click)="clear()" class="btn btn-danger">clear</button>&nbsp;&nbsp;&nbsp;
+          <button (click)="updateVac()" class="btn btn-success">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
