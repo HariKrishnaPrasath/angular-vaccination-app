@@ -7,7 +7,7 @@ import { AdminDashboardComponent } from './components/superAdminComponents/admin
 // <<<<<<< Updated upstream
 // import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
 // =======
-import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
+import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';
 import { HomeComponent } from './components/patientComponent/home/home.component';

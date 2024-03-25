@@ -3,6 +3,7 @@
     src="https://static.vecteezy.com/system/resources/previews/000/290/610/original/administration-vector-icon.jpg">
 <h2 class="col-md-4" style="font-style: italic;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">ADMIN DASHBOARD</h2>
 <br>
+<div class="card" style="width: 25%; float: right;margin-top: -100px;margin-right: 40px;font-size: larger;font-weight: 1000;" id="clock"></div>
 <div class="col-md-4">
     <div class="card">
         <p >Total No of Logins : {{login}}</p>
@@ -18,8 +19,23 @@
           </div>
     </div>
 </div>
-<div class="col-md-4" style="float: right;">
-    <div class="card" style="margin-top: -100px;">
+<div class="col-md-4" style="float:right;margin-top: -220px;">
+    <div class="card">
+        <p >Total Centers: {{login}}</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+    </div>
+    
+    <div class="card">
+        <p>Total Certificates: </p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+    </div>
+</div>
+<div class="col-md-4" style="float: right;margin-top: -220px;">
+    <div class="card">
         <p>Super Admin Count: {{superAdmin}}</p>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
@@ -32,5 +48,11 @@
           </div>
     </div>
 </div>
+<div class="card" style="width: 45%;">
+    <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'340px',float:'left'}"></canvasjs-chart>    
+</div>   
+<div class="card" style="width: 50%;float: right;margin-top: -390px;">
+    <canvasjs-chart [options]="chartOptions2" [styles]="{width: '100%', height:'340px'}"></canvasjs-chart>    
+</div>      
 
 
