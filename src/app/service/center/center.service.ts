@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Center } from '../../model/center/center';
 import { Observable } from 'rxjs';
+import { Vaccine } from '../../model/vaccine/vaccine';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class CenterService {
     return this.httpClient.get("http://localhost:8090/center/getAllCenter");
   }
 
-  getCenterById(id?: string):Observable<any>{
+  getCenterById(id?: number):Observable<any>{
     return this.httpClient.get("http://localhost:8090/center/getByID/"+id);
   }
 
@@ -30,5 +31,16 @@ export class CenterService {
   getCenterByAdminId(adminId: number): Observable<any> {
     return this.httpClient.get('http://localhost:8090/center/admin/'+adminId);
   }
-
+  // getAllCenter(): Observable<any> {
+  //   return this.httpClient.get('http://localhost:8090/center/getAllCenter');
+  // }
+  addVaccineToCenter(centerId: number, vaccine: Vaccine): Observable<any> {
+    return this.httpClient.put('http://localhost:8090/center/' + centerId + '/addVaccine', vaccine);
+  }
+  getAllVaccinesInCenter(centerId: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8090/center/getAllVaccinesInCenter/'+centerId);
+  }
+  removeVaccineFromCenter(centerId: number, vaccineId: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8090/center/'+centerId+'/removeVaccine/'+vaccineId)
+  }
 }

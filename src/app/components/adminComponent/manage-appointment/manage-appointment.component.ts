@@ -4,37 +4,86 @@ import { FormsModule } from '@angular/forms';
 import { PatientService } from '../../../service/patient/patient.service';
 import { Patient } from '../../../model/patient/patient';
 import { RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AppointmentService } from '../../../service/appointment/appointment.service';
+import { Appointment } from '../../../model/appointment/appointment';
+import { Center } from '../../../model/center/center';
+import { VaccinationStatusDTO } from '../../../model/vaccinationStatusDTO/vaccination-status-dto';
 
 @Component({
   selector: 'app-manage-appointment',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterOutlet,RouterLinkActive],
+  imports: [CommonModule, FormsModule, RouterOutlet, RouterLinkActive],
   templateUrl: './manage-appointment.component.html',
   styleUrl: './manage-appointment.component.css'
 })
 export class ManageAppointmentComponent {
-checkAppointment(patient: Patient) {
-  this.addStatus = true;
-  this.newPatient = {...patient};
 
-}
-  patientList:Patient[]=[];
-  newPatient: Patient=new Patient();
-  constructor(private patientService:PatientService){}
-  addStatus:boolean = false;
+
+  // patientList: Patient[] = [];
+  // newPatient: Patient = new Patient();
+
+
+  constructor(private patientService: PatientService, private appointmentService: AppointmentService) {
+    let data = JSON.parse(sessionStorage.getItem('Center')!);
+    this.center = data;
+
+  }
+  addStatus: boolean = false;
+  newAppointment: Appointment = new Appointment();
+  appointments: Appointment[] = [];
+  center?: Center;
+  vaccinationStatusDTO: VaccinationStatusDTO = new VaccinationStatusDTO();
+
   ngOnInit() {
-    this.patientService.getAllPatients().subscribe(
+
+    this.loadAppointmentForCenter();
+    // this.patientService.getAllPatients().subscribe(
+    //   {
+    //     next: (data) => {
+    //       this.patientList = [...data];
+    //       console.log(data);
+    //       console.log(this.patientList);
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //     }
+    //   }
+    // );
+  }
+  loadAppointmentForCenter() {
+    this.appointmentService.getAppointmentForCenter(this.center?.centerId!).subscribe(
       {
-        next:(data)=>{
-          this.patientList=[...data];
-          console.log(data);
-          console.log(this.patientList);
-        },
-        error:(err)=>{
-          console.log(err);
+        next: (res) => {
+          console.log(res);
+          this.appointments = [...res];
         }
       }
-    );
-} 
+    )
+  }
+  checkAppointment(appointment: Appointment) {
+    this.addStatus = true;
+    this.newAppointment = { ...appointment };
+
+  }
+  updateAppointment(updateAppointment: Appointment) {
+    
+    this.vaccinationStatusDTO.appointmentId = updateAppointment.bookingId;
+    this.vaccinationStatusDTO.isVaccinated = !updateAppointment.vaccineStatus;
+
+    console.log(this.vaccinationStatusDTO);
+    
+    this.appointmentService.updateAppointmentStatus(this.vaccinationStatusDTO).subscribe(
+      {
+        next: (res) => {
+          console.log(res);
+          this.loadAppointmentForCenter();
+        },
+        error: (err) => {
+          console.log(err);
+          
+        }
+      }
+    )
+  }
 }
 

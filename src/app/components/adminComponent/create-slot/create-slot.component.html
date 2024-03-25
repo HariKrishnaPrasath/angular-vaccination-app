@@ -30,7 +30,7 @@
       <!-- phone input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="phone">Start Time</label>
-        <input placeholder="hh:mm AM/PM" type="text" id="phone" class="form-control form-control-md"
+        <input type="time" placeholder="hh:mm AM/PM" id="phone" class="form-control form-control-md"
           [(ngModel)]="newSlot.startTime" name="startTime" required />
       </div>
 
@@ -38,7 +38,7 @@
       <!-- address input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="address">End Time</label>
-        <input placeholder="hh:mm AM/PM" type="text" id="address" class="form-control form-control-md"
+        <input type="time" placeholder="hh:mm AM/PM" id="address" class="form-control form-control-md"
           [(ngModel)]="newSlot.endTime" name="endTime" required />
       </div>
 
@@ -81,7 +81,7 @@
           aria-expanded="false" aria-controls="'collapseExample-' + slot.id">
 
           <th scope="row">{{slot.id}}</th>
-          <td>{{slot.startTime}} - {{slot.endTime}}</td>
+          <td>{{convert(slot.startTime) | date:'hh:mm a'}} - {{convert(slot.endTime) | date:'hh:mm a'}}</td>
           <td>{{slot.center?.centerName}}</td>
           <td>{{slot.availableSlots}}</td>
 
@@ -106,7 +106,7 @@
                     <!-- phone input -->
                     <div class="form-outline mb-4">
                       <label class="form-label" for="phone">Start Time</label>
-                      <input placeholder="hh:mm AM/PM" type="text" id="phone" class="form-control form-control-md"
+                      <input type="time" placeholder="hh:mm AM/PM" id="phone" class="form-control form-control-md"
                         [(ngModel)]="updateSlot.startTime" name="startTime" required />
                     </div>
 
@@ -114,7 +114,7 @@
                     <!-- address input -->
                     <div class="form-outline mb-4">
                       <label class="form-label" for="address">End Time</label>
-                      <input placeholder="hh:mm AM/PM" type="text" id="address" class="form-control form-control-md"
+                      <input type="time" placeholder="hh:mm AM/PM" id="address" class="form-control form-control-md"
                         [(ngModel)]="updateSlot.endTime" name="endTime" required />
                     </div>
 

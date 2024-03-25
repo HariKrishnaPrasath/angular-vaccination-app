@@ -1,0 +1,15 @@
+.card {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .card-content {
+    text-align: center;
+  }
+  
+  .selected {
+    background-color: lightblue; /* Change the background color to your desired color */
+  }
+  

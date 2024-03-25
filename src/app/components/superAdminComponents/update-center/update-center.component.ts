@@ -16,7 +16,7 @@ import { AdminService } from '../../../service/admin/admin.service';
   styleUrl: './update-center.component.css'
 })
 export class UpdateCenterComponent implements OnInit {
-  id: string= "";
+  id: number;
   center:Center=new Center();
   message:string="";
   errorMessage:string="";
@@ -29,7 +29,7 @@ export class UpdateCenterComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private adminService : AdminService
   ) {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id')!;
+    this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
     console.log(this.id);
     this.centerService.getCenterById(this.id).subscribe(
       {

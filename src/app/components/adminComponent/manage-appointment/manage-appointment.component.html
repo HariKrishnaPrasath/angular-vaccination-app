@@ -18,11 +18,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of patientList;let i = index">
+          <tr *ngFor="let appointment of appointments;let i = index">
             <th scope="row">{{i+1}}</th>
-            <td>{{data.patientId}}</td>
-            <td>{{data.patientName}}</td>
-            <td><button type="default" (click)="checkAppointment(data)">check appointments</button></td>
+            <td>{{appointment.patient?.patientId}}</td>
+            <td>{{appointment.patient?.patientName}}</td>
+            <td><button type="default" (click)="checkAppointment(appointment)">check appointments</button></td>
+            <td><button type="default" (click)="updateAppointment(appointment)">{{ !appointment.vaccineStatus  ? 'Approve' : 'Disapprove' }}</button></td>
           </tr>
         </tbody>
       </table>
@@ -42,14 +43,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let appointment of newPatient.appointment;">
-              <th scope="row">{{appointment.bookingId}}</th>
-              <td>{{appointment.slot}}</td>
-              <td>{{appointment.vaccineStatus}}</td>
-              <td>{{appointment.vaccine}}</td>
-              <td>{{appointment.bookingDate}}</td>
+            <!-- <tr *ngFor="let appointmentVal of newAppointment;"> -->
+              <th scope="row">{{newAppointment.bookingId}}</th>
+              <td>{{newAppointment.slot?.startTime}} - {{newAppointment.slot?.endTime}}</td>
+              <td>{{newAppointment.vaccineStatus}}</td>
+              <td>{{newAppointment.vaccine?.vaccineName}}</td>
+              <td>{{newAppointment.bookingDate}}</td>
   
-            </tr>
+            <!-- </tr> -->
             
           </tbody>
         </table>

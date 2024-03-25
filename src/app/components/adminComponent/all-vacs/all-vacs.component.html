@@ -3,9 +3,9 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="search Vaccine"  aria-label="Vaccine name" aria-describedby="button-addon2">
     </div>
-    <button type="button" class="btn btn-primary" >+ Add Vaccine</button>
+    <button type="button" class="btn btn-primary" (click)="addVaccine()">+ Add Vaccine</button>
 </div>
-<table class="table table-hover">
+<table class="table table-hover" *ngIf="vaccineArray.length > 0">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -16,14 +16,14 @@
       </tr>
     </thead>
     <tbody>
-      <!--<tr *ngFor="let vaccine of vaccineArray" >-->
+      <tr *ngFor="let vaccine of vaccineArray" >
         <th scope="row">{{vaccine.vaccineId}}</th>
         <td>{{vaccine.vaccineName}}</td>
         <td>{{vaccine.manufacturingDate}}</td>
         <td>{{vaccine.expiryDate}}</td>
         <td>{{vaccine.description}}</td>
         <!--<td><button type="button" class="btn btn-primary" (click)="updateVaccine(vaccine)">Add</button></td>-->
-        <td><button type="button" class="btn btn-primary" >Remove</button></td>
-      <!--</tr>-->
+        <td><button type="button" class="btn btn-primary" (click)="removeVaccine(vaccine)">Remove</button></td>
+      </tr>
     </tbody>
   </table>

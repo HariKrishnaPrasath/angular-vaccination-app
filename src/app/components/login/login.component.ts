@@ -95,9 +95,9 @@ export class LoginComponent {
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          localStorage.setItem("superAdmin", JSON.stringify(this.loginComponent))
-          sessionStorage.setItem("superAdmin", JSON.stringify(data))
-          this.router.navigateByUrl("/superAdmin/" + this.loginComponent.email)
+          localStorage.setItem("Admin", JSON.stringify(this.loginComponent))
+          sessionStorage.setItem("Admin", JSON.stringify(data))
+          this.router.navigateByUrl("/admin/" + this.loginComponent.email)
         },
         error: (err) => {
           console.log("okok");
