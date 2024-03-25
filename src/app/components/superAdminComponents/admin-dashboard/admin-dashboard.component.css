@@ -1,19 +1,38 @@
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(64, 63, 63, 0.1);
-    padding: 20px;
-    width: 100%; /* Set the width to 60% for a medium-sized card */
-    max-width: 600px; /* Set a maximum width for larger screens */
-    margin: 10px auto; /* Center the card horizontally */
-    animation: fadeIn 1s ease;
-    float: left;
-}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
     to {
+        opacity: 1;
+    }
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 20px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
