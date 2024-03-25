@@ -9,7 +9,7 @@ export class VaccineService {
 
   constructor(private httpClient:HttpClient) { }
   getAllVaccine():Observable<any>{
-    return this.httpClient.get("http://localhost:8090/vaccine/getAllVaccines");
+    return this.httpClient.get("http://localhost:8090/vaccine/getAllvaccine");
   }
   private url = 'http://localhost:8090/vaccine/deleteById';
   deleteById(id?:number):Observable<any>{

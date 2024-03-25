@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { Patient } from '../../../model/patient/patient';
 
 @Component({
   selector: 'app-base',
@@ -16,10 +17,11 @@ export class BaseComponent {
 display() {
 throw new Error('Method not implemented.');
 }
-  email?: string = "";
+  patient?: Patient;
   constructor(private router:Router, private activatedRouter: ActivatedRoute) {
-    this.email = this.activatedRouter.snapshot.paramMap.get('email')!;
-    this.router.navigateByUrl('user/'+ this.email + '/home');
+    this.patient = JSON.parse(sessionStorage.getItem('Patient')!);
+    
+    this.router.navigateByUrl('user/'+ this.patient!.email + '/home');
   }
   logout() : void {
     this.router.navigateByUrl('patient/login');

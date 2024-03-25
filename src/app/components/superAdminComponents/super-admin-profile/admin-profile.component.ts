@@ -22,7 +22,7 @@ export class SuperAdminProfileComponent {
   deleteAdminError: string = ''
   updateStatus: boolean = false
   constructor(private adminService: AdminService, private router: Router, private activatedRouter: ActivatedRoute) {
-    var obj = localStorage.getItem("superAdmin");
+    var obj = sessionStorage.getItem("SuperAdmin");
     var data;
     if (obj != null) {
       data = JSON.parse(obj)

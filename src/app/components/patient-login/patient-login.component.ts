@@ -31,7 +31,7 @@ export class PatientLoginComponent {
         },
         complete: ()=>{
           // Redirect to login page on successful registration
-          this.router.navigateByUrl('user/home');
+          this.router.navigateByUrl('user/' + this.newPatient.email);
           }
       }
     )
@@ -47,14 +47,15 @@ export class PatientLoginComponent {
       {
         next: (response) => {
           sessionStorage.setItem("Patient",JSON.stringify(response))
-          console.log(response);
+          console.log(response.email);
+          this.router.navigateByUrl('user/' + response.email);
+
         },
         error: (e) => {
           alert("Error logging in");
         },
         complete: ()=>{
           // Redirect to login page on successful registration
-          this.router.navigateByUrl('user/home');
           }
       }
     )

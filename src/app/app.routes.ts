@@ -7,7 +7,7 @@ import { AdminDashboardComponent } from './components/superAdminComponents/admin
 // <<<<<<< Updated upstream
 // import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
 // =======
-import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/super-admin-profile.component';
+import { SuperAdminProfileComponent } from './components/superAdminComponents/super-admin-profile/admin-profile.component';
 import { AddCenterComponent } from './components/superAdminComponents/add-center/add-center.component';
 import { AddAdminComponent } from './components/superAdminComponents/add-admin/add-admin.component';
 import { HomeComponent } from './components/patientComponent/home/home.component';
@@ -26,6 +26,7 @@ import { PatientLoginComponent } from './components/patient-login/patient-login.
 import { BaseComponent } from './components/patientComponent/base/base.component';
 
 import { AdminProfileComponent } from './components/adminComponent/admin-profile/admin-profile.component';
+import { ViewCenterComponent } from './components/patientComponent/view-center/view-center.component';
 
 
 import { UpdateVacComponent } from './components/superAdminComponents/update-vac/update-vac.component';
@@ -36,13 +37,15 @@ import { AllVacsComponent } from './components/adminComponent/all-vacs/all-vacs.
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
+    { path: 'patient/login', component: PatientLoginComponent },
     {
         path: 'user/:email', component: BaseComponent, children: [
-            { path: 'home',component:HomeComponent},
+            { path: 'home', component: HomeComponent },
             { path: 'profile', component: ProfileComponent },
             { path: 'certificate', component: CertificatesComponent },
             { path: 'center', component: CenterComponent },
-            { path: 'appointment', component: MyappointmentsComponent }
+            { path: 'appointment', component: MyappointmentsComponent },
+            { path: 'viewCenter/:centerId', component: ViewCenterComponent }
         ]
     },
     {
@@ -50,17 +53,17 @@ export const routes: Routes = [
             { path: 'adminDashboard', component: AdminDashboardComponent },
 
             { path: 'adminProfile', component: AdminProfileComponent },
-            { path: 'addCenter', component: AddCenterComponent},
-            { path: 'updateCenter/:id', component: UpdateCenterComponent},
-            { path: 'allCenters', component: AllCentersComponent},
+            { path: 'addCenter', component: AddCenterComponent },
+            { path: 'updateCenter/:id', component: UpdateCenterComponent },
+            { path: 'allCenters', component: AllCentersComponent },
             { path: 'addVaccine', component: AddVaccinesComponent },
 
             { path: 'superAdminProfile', component: SuperAdminProfileComponent },
             { path: 'addCenter', component: AddCenterComponent },
-            {path: 'allVaccines', component: AllVaccinesComponent},
-            
-            {path: 'createVac', component:CreateVacComponent},
-            {path: 'updateVac/:id', component: UpdateVacComponent},
+            { path: 'allVaccines', component: AllVaccinesComponent },
+
+            { path: 'createVac', component: CreateVacComponent },
+            { path: 'updateVac/:id', component: UpdateVacComponent },
             { path: 'addAdmin', component: AddAdminComponent }
         ]
     },
@@ -69,13 +72,11 @@ export const routes: Routes = [
             { path: 'adminProfile', component: AdminProfileComponent },
             { path: 'createSlot', component: CreateSlotComponent },
             { path: 'createVaccine', component: CreateVaccineComponent },
-            {path: 'addVaccines',component:AddVaccinesComponent},
-            {path: 'allVacs',component:AllVacsComponent},
+            { path: 'addVaccines', component: AddVaccinesComponent },
+            { path: 'allVacs', component: AllVacsComponent },
             { path: 'manageAppointments', component: ManageAppointmentComponent },
             { path: 'manageCenter', component: ManageCenterComponent }
         ]
 
     },
-    {path:'patient/login', component:PatientLoginComponent}
-
 ];

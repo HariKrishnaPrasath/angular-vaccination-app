@@ -9,14 +9,14 @@
       </tr>
     </thead>
     <tbody>
-      <!--<tr *ngFor="let vaccine of vaccineArray" >-->
-        <th scope="row">{{vaccine.vaccineId}}</th>
+      <tr *ngFor="let vaccine of vaccineArray; let i = index" >
+        <th scope="row">{{i + 1}}</th>
         <td>{{vaccine.vaccineName}}</td>
         <td>{{vaccine.manufacturingDate}}</td>
         <td>{{vaccine.expiryDate}}</td>
         <td>{{vaccine.description}}</td>
         
-        <td><button type="button" class="btn btn-primary" >Add</button></td>
-      <!--</tr>-->
+        <td><button type="button" class="btn btn-primary" (click)="addVaccineToCenter(vaccine)">Add</button></td>
+      </tr>
     </tbody>
   </table>

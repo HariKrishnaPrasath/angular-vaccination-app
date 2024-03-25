@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterLinkActive } from '@angular/router';
 import { Center } from '../../../model/center/center';
+import { SlotDateSearchPipe } from '../../../pipes/slot-date-search.pipe';
 
 
 
 @Component({
   selector: 'app-create-slot',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLinkActive],
+  imports: [CommonModule, FormsModule, RouterLinkActive, SlotDateSearchPipe],
   templateUrl: './create-slot.component.html',
   styleUrl: './create-slot.component.css'
 })
@@ -86,6 +87,10 @@ export class CreateSlotComponent {
         }
       )
     }
+  }
+  convert(time: Date | undefined): string | number | Date {
+    const today = new Date();
+    return new Date(today.toDateString() + ' ' + time);
   }
   
 

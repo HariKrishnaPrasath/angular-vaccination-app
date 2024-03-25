@@ -1,5 +1,6 @@
 
-<br>
+
+<!-- <br>
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="search center" [(ngModel)]="query" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -30,4 +31,40 @@
         <td><button type="button" class="btn btn-primary" (click)="displayVaccines(vaccineCenter)">Available Vaccines</button></td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+
+<div class="row justify-content-between">
+    <div class="col-md-4">
+        <form class="example">
+            <input type="text" placeholder="Search.." name="search">
+            <button><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary btn-sm" style="margin-top: 10px;margin-left: 70px;">+ Book Appointment</button>
+    </div>
+</div>
+<div style="margin-top: 5%;">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Sno</th>
+            <th scope="col">Center Name</th>
+            <th scope="col">District</th>
+            <th scope="col">State</th>
+            <th scope="col">Contact Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let center of centers;let i = index" (click) = "selectCenter(center.centerId)">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{center.centerName}}</td>
+            <td>{{center.district}}</td>
+            <td>{{center.state}}</td>
+            <td>{{center.contactNumber}}</td>
+
+          </tr>
+          
+        </tbody>
+      </table>
+</div>

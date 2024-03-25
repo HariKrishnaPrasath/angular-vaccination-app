@@ -1,0 +1,19 @@
+<p>{{selectedCenter.centerName}} welcomes you</p>
+<p>{{selectedCenter.address}}</p>
+<P>{{selectedCenter.district}} {{selectedCenter.state}}</P>
+<label class="form-label" for="name">Date</label>
+<input type="date" id="name" class="form-control form-control-md" [(ngModel)]="bookAppointment.bookingDate" name="slotDate" />
+<div *ngIf="slots.length < 1">
+    <p>no slots Available</p>
+</div>
+<div *ngFor="let slot of slots | slotDateSearch : bookAppointment.bookingDate" class="card" [ngClass]="{ 'selected': slot === selectedSlot }"
+    (click)="selectCard(slot)">
+    <div class="card-content">
+        <p>{{ convert(slot.startTime) | date:'hh:mm a'}} - {{convert(slot.endTime) | date:'hh:mm a'}}</p>
+    </div>
+</div>
+<select class="form-select" [(ngModel)]="bookAppointment.vaccine" name="selectedAdmin">
+    <option value="" disabled selected>Select a vaccine</option>
+    <option *ngFor="let vaccine of selectedCenter.vaccineMap" [ngValue]="vaccine">{{vaccine.vaccineName}}</option>
+</select>
+<button type="button" (click)="bookAnAppointment()" class="btn btn-primary btn-sm" style="margin-top: 10px;margin-left: 70px;">Book Appointment</button>
