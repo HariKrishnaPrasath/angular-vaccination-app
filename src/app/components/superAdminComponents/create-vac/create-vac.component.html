@@ -15,42 +15,58 @@
     padding-right: 100px;
   }
 </style>
+<img style="float: right;width: 20%;" src="https://imgk.timesnownews.com/media/5_17.png">
+<div class="col-md-4">
+  <img style="width: 40%;" src="https://th.bing.com/th/id/R.b332b09cb810d864e50f3b519469bdc7?rik=kxjstUhxa0SiJA&riu=http%3a%2f%2fwww.inklingsnews.com%2fwp-content%2fuploads%2f2020%2f10%2fScreen-Shot-2020-10-22-at-12.50.43-PM-900x594.png&ehk=IT2g%2fF%2bupAcBjpTtTtjmaE%2fJ99aNG5WTmh0HjIppgY0%3d&risl=&pid=ImgRaw&r=0">
+  <br>
+  <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Create Vaccine</h2>
+</div>
 <br>
-<h5> Create Vaccine:</h5>
-<div class="ex1">
-  <div *ngIf="message" class="alert alert-success">
-    <p> {{message}}</p>
-  </div>
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    <p> {{errorMessage}}</p>
-  </div>
-  <div>
-    <form #vaccineForm="ngForm" (ngSubmit)="createVac()">
-      <div class="form-group">
-        <label for="vaccineName">Vaccine Name:</label><br>
-        <input type="text" id="vaccineName" [(ngModel)]="vaccine.vaccineName" name="vaccineName" required
-          #nameField="ngModel" placeholder="Enter vaccine name"><br>
-        <div class="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Vaccine name is
-          required.</div>
-      </div>
-
-
-      <label for="manufacturingDate">Manufacturing Date:</label><br>
-      <input type="date" id="manufacturingDate" [(ngModel)]="vaccine.manufacturingDate" name="manufacturingDate"><br>
-
-      <label for="expiryDate">Expiry Date:</label><br>
-      <input type="date" id="expiryDate" [(ngModel)]="vaccine.expiryDate" name="expiryDate"><br>
-
-
-      <label for="description">Description:</label><br>
-      <textarea id="description" [(ngModel)]="vaccine.description" name="description" rows="4"></textarea><br>
-      <div class="button-container">
-        <!--<button type="button" class="btn btn-warning" (click)="goBackToPrevPage()">back</button>-->
-        <div class="ex2">
-          <button type="submit" class="btn btn-success">Create Vaccine</button>
+<div class="card"></div>
+<br>
+<div class="card">
+  <br>
+  <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">Vaccine details</h4>
+        <br>
+        <div class="card"></div>
+  <div class="ex1">
+    <div *ngIf="message" class="alert alert-success">
+      <p> {{message}}</p>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      <p> {{errorMessage}}</p>
+    </div>
+    <div>
+      
+      <form #vaccineForm="ngForm" (ngSubmit)="createVac()">
+        <br>
+        <div class="input-group flex-nowrap" style="width: 75%;">
+          <span class="input-group-text" id="addon-wrapping">Vaccine name</span>
+          <input type="text" class="form-control" name="vacc"  [(ngModel)]="vaccine.vaccineName" placeholder="Vaccine Name" aria-label="Username" aria-describedby="addon-wrapping">
         </div>
-      </div>
-
-
-    </form>
-  </div>
+        <br>
+        <div class="input-group flex-nowrap" style="width: 75%;">
+          <span class="input-group-text" id="addon-wrapping">Manufacturing Date:</span>
+          <input type="date" name="date" class="form-control"  [(ngModel)]="vaccine.manufacturingDate" placeholder="Date" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <br>
+        <div class="input-group flex-nowrap" style="width: 75%;">
+          <span class="input-group-text" id="addon-wrapping">Expiry Date:</span>
+          <input type="date" name="date2" class="form-control"  [(ngModel)]="vaccine.expiryDate" placeholder="Date" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <br>
+        <div class="input-group flex-nowrap" style="width: 75%;">
+          <span class="input-group-text" id="addon-wrapping">Description:</span>
+          <textarea type="date" name="desc" class="form-control" [(ngModel)]="vaccine.description" placeholder="Description" aria-label="Username" aria-describedby="addon-wrapping"></textarea>
+        </div>
+        <br>
+        <div class="button-container">
+          <div class="ex2">
+            <button type="submit" class="btn btn-success">Create Vaccine</button>
+          </div>
+          <button type="button" style="margin-left: 10px;" class="btn btn-warning" (click)="goBackToPrevPage()">Back</button>
+        </div>
+        <br>
+      </form>
+    </div>
+</div>

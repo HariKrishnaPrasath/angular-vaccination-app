@@ -9,6 +9,8 @@ import { AdminService } from '../../../service/admin/admin.service';
 import { Admin } from '../../../model/admin/admin';
 import { compileNgModule } from '@angular/compiler';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-manage-center',
@@ -20,8 +22,20 @@ import { compileNgModule } from '@angular/compiler';
 
 
 export class ManageCenterComponent implements OnInit {
+  openToast() {
+    this._snackBar.open('Successfully updated!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
+  }
   updateCenter() {
-    throw new Error('Method not implemented.');
+    this.centerService.updateCenterByCenter(this.center).subscribe(
+      {
+        next: (res) => {
+          console.log(res);
+          this.openToast()
+        }
+      }
+    )
   }
   clear() {
     throw new Error('Method not implemented.');
@@ -32,7 +46,7 @@ export class ManageCenterComponent implements OnInit {
   errorMessage: string = "";
   details: Admin = new Admin();
 
-  constructor(private adminService: AdminService, private centerService: CenterService, private activatedRoute: ActivatedRoute) {
+  constructor(private _snackBar: MatSnackBar,private adminService: AdminService, private centerService: CenterService, private activatedRoute: ActivatedRoute) {
     this.email = this.activatedRoute.snapshot.paramMap.get('email')!;
     console.log(this.email);
   };

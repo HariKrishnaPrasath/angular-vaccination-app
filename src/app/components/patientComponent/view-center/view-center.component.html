@@ -1,19 +1,47 @@
-<p>{{selectedCenter.centerName}} welcomes you</p>
-<p>{{selectedCenter.address}}</p>
-<P>{{selectedCenter.district}} {{selectedCenter.state}}</P>
+<img style="width:50%;height: 20%;" src="https://thekingdominsider.com/wp-content/uploads/2021/02/51B1F7A3-EA5F-4B01-990C-606A12737795.jpeg">
+<img style="width: 45%;height: 20%;float: right;" src="https://th.bing.com/th/id/OIP.5NRtzS3HyoV1OZqvlKiBsAHaFP?pid=ImgDet&w=199&h=140&c=7&dpr=2">
+<button class="btn btn-primary" type="button" style="width: 100%;" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Booking process...
+</button>
+<br>
+<div class="card"></div>
+<br>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://pragativadi.com/wp-content/uploads/2021/10/IMG_20211010_103600.jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+            <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Centre Details</h2>
+            <h6 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{selectedCenter.centerName}} welcomes you</h6>
+            <br>
+            <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Address: {{selectedCenter.address}}</p>
+            <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">District & State : {{selectedCenter.district}} & {{selectedCenter.state}}</p>  
+        </div>
+    </div>
+</div>
+</div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d124444.93921601733!2d80.216064!3d12.9138688!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1711522023624!5m2!1sen!2sin" class="card" width="43%"style="margin-top: -200px;float: right;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="card"></div>
+<br>
 <label class="form-label" for="name">Date</label>
 <input type="date" id="name" class="form-control form-control-md" [(ngModel)]="bookAppointment.bookingDate" name="slotDate" />
 <div *ngIf="slots.length < 1">
     <p>no slots Available</p>
 </div>
-<div *ngFor="let slot of slots | slotDateSearch : bookAppointment.bookingDate" class="card" [ngClass]="{ 'selected': slot === selectedSlot }"
+<div *ngFor="let slot of slots | slotDateSearch : bookAppointment.bookingDate" class="card2" [ngClass]="{ 'selected': slot === selectedSlot }"
     (click)="selectCard(slot)">
-    <div class="card-content">
+    <div class="card-content2">
         <p>{{ convert(slot.startTime) | date:'hh:mm a'}} - {{convert(slot.endTime) | date:'hh:mm a'}}</p>
     </div>
 </div>
+<br>
+<label for="selectedAdmin">Select a Vaccine</label>
 <select class="form-select" [(ngModel)]="bookAppointment.vaccine" name="selectedAdmin">
     <option value="" disabled selected>Select a vaccine</option>
     <option *ngFor="let vaccine of selectedCenter.vaccineMap" [ngValue]="vaccine">{{vaccine.vaccineName}}</option>
 </select>
-<button type="button" (click)="bookAnAppointment()" class="btn btn-primary btn-sm" style="margin-top: 10px;margin-left: 70px;">Book Appointment</button>
+<br>
+<button type="button" (click)="bookAnAppointment()" class="btn btn-primary" style="width: 100%;">Book Appointment</button>

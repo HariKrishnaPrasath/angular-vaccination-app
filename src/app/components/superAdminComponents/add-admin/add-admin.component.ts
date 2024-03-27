@@ -4,7 +4,7 @@ import { Admin } from '../../../model/admin/admin';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-admin',
   standalone: true,
@@ -13,7 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './add-admin.component.css'
 })
 export class AddAdminComponent {
-  constructor(private adminService:AdminService){
+  constructor(private adminService:AdminService,private _snackBar: MatSnackBar){
     this.adminService.searchAdmin().subscribe(
       {
         next: (data) => {
@@ -36,9 +36,16 @@ export class AddAdminComponent {
       }
     )
   }
+  
+openToast() {
+  this._snackBar.open('Successfully updated!', 'Close', {
+    duration: 7000 // 7 seconds
+  });
+}
   adminDetails:Admin=new Admin(0,'','','','','')
   idStatus:boolean=false
   emailStatus:boolean=true
+  nameStatus:boolean=false
   add:boolean=true
   update:boolean=false
   delete:boolean=false
@@ -56,7 +63,13 @@ export class AddAdminComponent {
   updateAdminError:string=''
   addStatus:boolean=false
   searchError:string=''
+
+  adminDup:Admin[]=[]
   addAdmin(){
+    if(this.adminDetails.adminName==""||this.adminDetails.adminType==""||this.adminDetails.email==""||this.adminDetails.password==""||this.adminDetails.phoneNumber==""){
+      alert("please provide valid information")
+    }
+    else{
     this.adminService.addAdmin(this.adminDetails).subscribe(
       {
         next: (data) => {
@@ -64,7 +77,7 @@ export class AddAdminComponent {
           this.searchError=''
           this.deleteAdminSuccess=''
           this.deleteAdminError=''
-          this.addAdminSuccess="Admin Added Successfully"
+          this.openToast()
           this.adminService.searchAdmin().subscribe(
             {
               next: (data) => {
@@ -74,6 +87,7 @@ export class AddAdminComponent {
                 this.searchId=undefined
               },
               error: (err) => {
+                
                 console.log(err)
               },
               complete: () => {
@@ -84,17 +98,15 @@ export class AddAdminComponent {
           console.log(data)
         },
         error: (err) => {
-          this.addAdminSuccess=''
-          this.searchError=''
-          this.deleteAdminSuccess=''
-          this.deleteAdminError=''
-          this.addAdminError="Something Went Wrong Please check your email or Try Again"
+          alert("Admin add Error:"+err.error)
         },
         complete: () => {
           console.log("Server completed sending data.");
         }
       }
     )
+    this.addStatus=false
+    }
   }
   deleteAdmin(details:Admin){
     if (confirm("Do you want to Delete Account.Once you deleted you can't get back"))
@@ -106,7 +118,7 @@ export class AddAdminComponent {
           this.addAdminSuccess=''
           this.searchError=''
           this.deleteAdminError=''
-          this.deleteAdminSuccess="Admin Deleted Sucessfully"
+          this.openToast()
           this.adminService.searchAdmin().subscribe(
             {
               next: (data) => {
@@ -126,11 +138,7 @@ export class AddAdminComponent {
           console.log(data)
         },
         error: (err) => {
-          this.addAdminError=''
-          this.addAdminSuccess=''
-          this.searchError=''
-          this.deleteAdminSuccess=''
-          this.deleteAdminError="Something Went Wrong Please check your ID or Try Again"
+          alert("Admin delete Error:"+err.error)
         },
         complete: () => {
           console.log("Server completed sending data.");
@@ -139,7 +147,31 @@ export class AddAdminComponent {
     )
   }
   searchAdmin(){
-    if(typeof this.searchString==='string'){
+    if(this.searchString==undefined){
+      this.adminService.searchAdmin().subscribe(
+        {
+          next: (data) => {
+            this.accounts=[]
+            this.accounts=data
+            console.log(data)
+            this.searchId=undefined
+            this.searchError=''
+          this.addAdminSuccess=''
+          this.addAdminError=''
+          this.deleteAdminError=''
+          this.deleteAdminSuccess=''
+            
+          },
+          error: (err) => {
+            console.log(err)
+          },
+          complete: () => {
+            console.log("Server completed sending data.");
+          }
+        }
+      )
+    }
+    else if(typeof this.searchString==='string'&&this.emailStatus==true ){
       this.adminService.searchByEmail(this.searchString).subscribe(
         {
           next: (data) => {
@@ -158,6 +190,36 @@ export class AddAdminComponent {
             this.deleteAdminSuccess=''
             this.deleteAdminError=''
             this.searchError="No Admin Found"
+            console.log(err)
+          },
+          complete: () => {
+            console.log("Server completed sending data.");
+          }
+        }
+      )
+    }
+    else if(this.nameStatus==true&&typeof this.searchString==='string'){
+      this.adminService.searchAdmin().subscribe(
+        {
+          next: (data) => {
+            this.accounts=[]
+              this.adminDup=data
+            for(let i=0;i<this.adminDup.length;i++){
+              if(this.adminDup[i].adminName==this.searchString)
+              {
+                this.accounts.push(this.adminDup[i])
+              }
+            }
+          this.searchString==undefined
+            this.searchId=undefined
+            this.searchError=''
+          this.addAdminSuccess=''
+          this.addAdminError=''
+          this.deleteAdminError=''
+          this.deleteAdminSuccess=''
+            
+          },
+          error: (err) => {
             console.log(err)
           },
           complete: () => {
@@ -194,30 +256,7 @@ export class AddAdminComponent {
         }
       )
       }
-      if(this.searchString==undefined){
-        this.adminService.searchAdmin().subscribe(
-          {
-            next: (data) => {
-              this.accounts=[]
-              this.accounts=data
-              console.log(data)
-              this.searchId=undefined
-              this.searchError=''
-            this.addAdminSuccess=''
-            this.addAdminError=''
-            this.deleteAdminError=''
-            this.deleteAdminSuccess=''
-              
-            },
-            error: (err) => {
-              console.log(err)
-            },
-            complete: () => {
-              console.log("Server completed sending data.");
-            }
-          }
-        )
-      }
+      
   }
 
 }

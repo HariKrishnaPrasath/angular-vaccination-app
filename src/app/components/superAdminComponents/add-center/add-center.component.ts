@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { AdminService } from '../../../service/admin/admin.service';
 import { Admin } from '../../../model/admin/admin';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
     selector: 'app-add-center',
     standalone: true,
@@ -30,19 +30,31 @@ export class AddCenterComponent implements OnInit {
 
   centerArray: Center[]=[];
   adminList: Admin[] = [];
+  adminList2: Admin[] = [];
   
   constructor(
     private centerService: CenterService,
     private location: Location,
-    private adminService: AdminService,
+    private adminService: AdminService,private _snackBar: MatSnackBar
   ) {}
-
+  openToast() {
+    this._snackBar.open('Center Added Successfully!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
+  }
   ngOnInit(): void {
     this.adminService.getAllAdmin().subscribe(
       {
         next: (res) => {
           console.log(res);
-          this.adminList = res;
+          this.adminList2 = res;
+          for(let i=0;i<this.adminList2.length;i++)
+          {
+            if(this.adminList2[i].email?.charAt(0)=='&')
+            {
+              this.adminList.push(this.adminList2[i])
+            }
+          }
         }
       }
     );
@@ -65,6 +77,7 @@ export class AddCenterComponent implements OnInit {
         console.log(data);
         this.message = 'Center added.';
         this.errorMessage = '';
+        this.openToast()
       },
       error: (err) => {
         console.log(err);

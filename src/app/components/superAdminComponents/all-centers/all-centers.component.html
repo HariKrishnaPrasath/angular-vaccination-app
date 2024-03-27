@@ -1,12 +1,23 @@
-
+<img style="width: 30%;float: right;" src="https://thumbs.dreamstime.com/b/together-fight-inspirational-positive-quote-coronavirus-covid-pandemic-hash-tag-stay-home-social-distancing-177125119.jpg">
+<div class="col-md-4">
+  <img style="width: 40%;" src="https://thumbs.dreamstime.com/b/hospital-building-clinic-medical-business-logo-template-flat-color-hospital-building-clinic-medical-business-logo-template-flat-148677990.jpg">
+  <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage Centers</h2>
+</div>
+<br>
+<div class="card"></div>
 <br>
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="search center" [(ngModel)]="query" aria-label="Recipient's username" aria-describedby="button-addon2">
-    </div>
-    <button type="button" class="btn btn-primary" (click)="addCenter()">+ Add center</button>
+    <div class="col-md-4">
+      <form class="example">
+        <input type="text" placeholder="Search.." name="search">
+        <button><i class="fa fa-search"></i></button>
+    </form>   
+   </div>
+    <button type="button" style="margin-right: 60px;" class="btn btn-primary" (click)="addCenter()">+ Add center</button>
 </div>
-
+<br>
+<div class="card"></div>
+<br>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -14,6 +25,8 @@
         <th scope="col">Center Name</th>
         <th scope="col">Address</th>
         <th scope="col">Contact</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
         <th></th>
         <th></th>
       </tr>

@@ -1,4 +1,11 @@
-
+<img style="float: right;width: 15%;" src="https://images.vexels.com/media/users/3/245567/isolated/lists/9980e1091eef7dfa295818c1257590ff-fully-vaccinated-quote-stroke.png">
+<div class="col-md-4">
+  <img style="width: 30%;" src="https://www.kindpng.com/picc/m/77-775976_medical-services-icon-clipart-png-download-medical-services.png">
+<h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage Appointment</h2>
+</div>
+<br>
+<div class="card"></div>
+<br>
 <div class="row justify-content-between">
     <div class="col-md-4">
         <form class="example">
@@ -7,6 +14,9 @@
         </form>
     </div>
 </div>
+<br>
+<div class="card"></div>
+<br>
 <div style="margin-top: 5%;">
     <table class="table table-hover">
         <thead>
@@ -14,23 +24,31 @@
             <th scope="col">Sno.</th>
             <th scope="col">Patient id</th>
             <th scope="col">Patient name</th>
-            <th scope="col">appointment</th>
+            <th scope="col">Approval status</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let appointment of appointments;let i = index">
+          <tr (click)="checkAppointment(appointment)" *ngFor="let appointment of appointments;let i = index">
             <th scope="row">{{i+1}}</th>
             <td>{{appointment.patient?.patientId}}</td>
             <td>{{appointment.patient?.patientName}}</td>
-            <td><button type="default" (click)="checkAppointment(appointment)">check appointments</button></td>
-            <td><button type="default" (click)="updateAppointment(appointment)">{{ !appointment.vaccineStatus  ? 'Approve' : 'Disapprove' }}</button></td>
+            <td *ngIf="appointment.vaccineStatus"><button class="btn btn-success" disabled>Approved</button></td> 
+            <td *ngIf="appointment.vaccineStatus==false"><button class="btn btn-danger" type="button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Pending...
+            </button></td>           
           </tr>
         </tbody>
       </table>
 </div>
 <div class="overlay" *ngIf="addStatus">
-  <div class="card">
-    <a style="cursor: pointer;color:red;text-align: right;" (click)="addStatus=false" ><u>x</u></a>
+  <div class="card2">
+   
+    <button type="button" (click)="addStatus=false" style="float: right;" class="btn-close" aria-label="Close"></button>
+    <br>
+    <h4 style="text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Appointment Details</h4>
+    <div class="card"></div>
+
     <div style="margin-top: 5%;">
       <table class="table table-hover">
           <thead> 
@@ -40,6 +58,7 @@
               <th scope="col">Vaccine status</th>
               <th scope="col">Vaccine</th>
               <th scope="col">booking date</th>
+              <th scope="col">Approval</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +68,7 @@
               <td>{{newAppointment.vaccineStatus}}</td>
               <td>{{newAppointment.vaccine?.vaccineName}}</td>
               <td>{{newAppointment.bookingDate}}</td>
-  
+              <td><button  class="btn btn-primary" (click)="updateAppointment(newAppointment)">{{ !newAppointment.vaccineStatus  ? 'Approve' : 'Disapprove' }}</button></td>
             <!-- </tr> -->
             
           </tbody>
@@ -57,4 +76,6 @@
   </div>
   </div>
 </div>
+
+
 <router-outlet></router-outlet>

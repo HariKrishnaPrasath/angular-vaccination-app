@@ -1,10 +1,27 @@
-<br>
-<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="search Vaccine"  aria-label="Vaccine name" aria-describedby="button-addon2">
-    </div>
-    <button type="button" class="btn btn-primary" (click)="addVaccine()">+ Add Vaccine</button>
+<img style="float: right;width: 20%;" src="https://th.bing.com/th/id/OIP.rPCJLukULPAuiZGU30gR6wHaEK?w=1600&h=900&rs=1&pid=ImgDetMain">
+<div class="col-md-4">
+  <img style="width: 30%;" src="https://4.bp.blogspot.com/-SC8mJs_0aFs/VuFJ5iGWNyI/AAAAAAAAAFA/AcVL7ouFfoQ/s1600-r/logo-vaccineaccess.png">
+  <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage vaccine</h2>
 </div>
+<br>
+<br>
+<div class="card"></div>
+<br>
+<div class="row justify-content-between">
+  <div class="col-md-4">
+    <form class="example">
+      <input type="text" placeholder="Search.." name="search">
+      <button><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary" (click)="addVaccine()">+ Add Vaccine</button>
+
+  </div>
+</div>
+<br>
+<div class="card"></div>
+<br>
 <table class="table table-hover" *ngIf="vaccineArray.length > 0">
     <thead>
       <tr>
@@ -13,6 +30,7 @@
         <th scope="col">Manufacturing Date</th>
         <th scope="col">Expiry Date</th>
         <th scope="col">Description</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -27,3 +45,5 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <h4 *ngIf="vaccineArray.length<1" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">No Vaccine Added</h4>

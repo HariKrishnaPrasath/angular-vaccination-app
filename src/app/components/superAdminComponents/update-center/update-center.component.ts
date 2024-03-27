@@ -7,6 +7,8 @@ import { Center } from '../../../model/center/center';
 import { Search } from '../../../pipes/search';
 import { Admin } from '../../../model/admin/admin';
 import { AdminService } from '../../../service/admin/admin.service';
+import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-center',
@@ -27,7 +29,9 @@ export class UpdateCenterComponent implements OnInit {
   constructor(
     private centerService: CenterService,
     private activatedRoute: ActivatedRoute,
-    private adminService : AdminService
+    private adminService : AdminService,
+    private location: Location,
+    private _snackBar: MatSnackBar
   ) {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
     console.log(this.id);
@@ -60,7 +64,11 @@ export class UpdateCenterComponent implements OnInit {
     );
     
   }
-
+  openToast() {
+    this._snackBar.open('Hello, this is a toast notification!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
+  }
   updateCenter(){
     console.log(this.center);
     
@@ -68,6 +76,7 @@ export class UpdateCenterComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.center = data;
+        this.openToast()
         this.message= "center details succesfully updated";
         //this.validation=false;
       },
@@ -79,9 +88,7 @@ export class UpdateCenterComponent implements OnInit {
     });
   }
   clear(){
-    let id = this.center.centerId;
-    this.center={};
-    this.center.centerId=id;
+    this.location.back();
   }
 }
 

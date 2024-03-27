@@ -1,0 +1,14 @@
+.card {
+    background-color: teal;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 45%; /* Set the width to 60% for a medium-sized card */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: 20px auto; /* Center the card horizontally */
+    
+}
+* {
+    box-sizing: border-box;
+  }
+  

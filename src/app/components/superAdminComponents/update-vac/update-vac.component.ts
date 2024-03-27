@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { VaccineService } from '../../../service/vaccine/vaccine.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-update-vac',
   standalone: true,
@@ -16,7 +18,7 @@ export class UpdateVacComponent implements OnInit{
     id: string="";
     message:string="";
     errorMessage:string="";
-    constructor(private vaccineService:VaccineService,private activatedRoute: ActivatedRoute){
+    constructor(private _snackBar: MatSnackBar,private vaccineService:VaccineService,private activatedRoute: ActivatedRoute,private location: Location){
       this.id = this.activatedRoute.snapshot.paramMap.get('id')!;
       console.log(this.id);
     }
@@ -35,12 +37,18 @@ export class UpdateVacComponent implements OnInit{
         }
       );
     }
+    openToast() {
+      this._snackBar.open('Vaccine Updated Successfully!', 'Close', {
+        duration: 7000 // 7 seconds
+      });
+    }
     updateVac(){
       console.log(this.vaccine);
       
       this.vaccineService.updateVaccine(this.vaccine).subscribe({
         next: (data) => {
           console.log(data);
+          this.openToast()
           this.vaccine = data;
           this.message= "vaccine details succesfully updated";
           //this.validation=false;
@@ -53,9 +61,7 @@ export class UpdateVacComponent implements OnInit{
       });
     }
     clear(){
-      let id = this.vaccine.vaccineId;
-      this.vaccine = {};
-      this.vaccine.vaccineId=id;
+      this.location.back();
     }
     /*onSubmit(): void {
       this.vaccineService.updateVaccine(this.vaccine).subscribe({

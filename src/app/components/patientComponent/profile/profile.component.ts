@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
     this.patientId = JSON.parse(sessionStorage.getItem('Patient')!).patientId;
     console.log(this.patientId)
   }
+  logout() : void {
+    this.router.navigateByUrl('patient/login');
+  }
   ngOnInit(): void {
     this.patientService.getPatientById(this.patientId!).subscribe(
       {
@@ -55,7 +58,7 @@ export class ProfileComponent implements OnInit {
     )
   }
   deletePatient() {
-    console.log(this.patientId)
+    if(confirm("Are you sure do you want to delete your account"))
     this.patientService.deletePatient(this.patientId!).subscribe(
       {
         next: (response) => {

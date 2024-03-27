@@ -1,17 +1,6 @@
-body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-background-image: url('https://i.pinimg.com/originals/a9/c1/aa/a9c1aa274ca21ea8c636912aea7b2b5e.jpg');
 
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 97.5vh;
-}
 
-.card {
+.card2 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);

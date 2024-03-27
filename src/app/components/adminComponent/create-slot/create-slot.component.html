@@ -1,3 +1,12 @@
+<img style="width: 30%;float: right;" src="https://mma.prnewswire.com/media/1601290/American_College_of_Preventive_Medicine_Vaccine_Confident.jpg?p=facebook">
+<div class="col-md-4">
+  <img style="width: 30%;" src="https://toaglobal.com/wp-content/uploads/2023/05/Increasing-capacity-while-saving-time2.png">
+  <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage Slots</h2>
+</div>
+
+<br>
+<div class="card"></div>
+<br>
 <div class="row justify-content-between">
   <div class="col-md-4">
     <form class="example">
@@ -65,11 +74,15 @@
 
   </div>
 </div>
+<br>
+<div class="card"></div>
+<br>
 <div style="margin-top: 5%;">
   <table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">Sno</th>
+        <th scope="col">Date</th>
         <th scope="col">Start-End Time</th>
         <th scope="col">Center Name</th>
         <th scope="col">Available Slots</th>
@@ -81,6 +94,7 @@
           aria-expanded="false" aria-controls="'collapseExample-' + slot.id">
 
           <th scope="row">{{slot.id}}</th>
+          <td>{{slot.date}}</td>
           <td>{{convert(slot.startTime) | date:'hh:mm a'}} - {{convert(slot.endTime) | date:'hh:mm a'}}</td>
           <td>{{slot.center?.centerName}}</td>
           <td>{{slot.availableSlots}}</td>
