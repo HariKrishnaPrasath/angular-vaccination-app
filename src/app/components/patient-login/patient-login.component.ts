@@ -27,7 +27,7 @@ export class PatientLoginComponent {
           console.log(response);
         },
         error: (e) => {
-          alert("Error adding the patient");
+          alert("Error adding the patient : "+e.error);
         },
         complete: ()=>{
           // Redirect to login page on successful registration
@@ -52,7 +52,7 @@ export class PatientLoginComponent {
 
         },
         error: (e) => {
-          alert("Error logging in");
+          alert("Error logging in : "+e.error);
         },
         complete: ()=>{
           // Redirect to login page on successful registration

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Slot } from '../../../model/slot/slot';
 import { SlotService } from '../../../service/slot/slot.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterLinkActive } from '@angular/router';
 import { Center } from '../../../model/center/center';
@@ -12,7 +12,7 @@ import { SlotDateSearchPipe } from '../../../pipes/slot-date-search.pipe';
 @Component({
   selector: 'app-create-slot',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLinkActive, SlotDateSearchPipe],
+  imports: [CommonModule, FormsModule, RouterLinkActive, SlotDateSearchPipe,DatePipe],
   templateUrl: './create-slot.component.html',
   styleUrl: './create-slot.component.css'
 })
@@ -24,7 +24,7 @@ export class CreateSlotComponent {
   newSlot: Slot = new Slot();
   centerId?: number;
   center: Center = new Center();
-  constructor(private slotService: SlotService, private router: Router) {
+  constructor(private slotService: SlotService, private router: Router,private datePipe:DatePipe) {
     let data, obj;
     obj = sessionStorage.getItem('Center');
     data = JSON.parse(obj!);
@@ -32,6 +32,7 @@ export class CreateSlotComponent {
     this.loadAllSlots();
 
   }
+
   loadAllSlots() {
     this.slotService.getAllSlotsByCenterId(this.center.centerId!).subscribe(
       {
