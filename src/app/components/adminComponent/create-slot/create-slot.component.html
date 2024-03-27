@@ -95,34 +95,34 @@
                     </div> -->
 
 
-                    <!-- Name input -->
+                    <!-- Date input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="name">Date</label>
-                      <input type="date" id="name" class="form-control form-control-md" [(ngModel)]="updateSlot.date"
+                      <label class="form-label" for="date">Date</label>
+                      <input type="date" id="date" class="form-control form-control-md" [(ngModel)]="updateSlot.date"
                         name="slotDate" required />
                     </div>
 
 
-                    <!-- phone input -->
+                    <!-- Start time input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="phone">Start Time</label>
-                      <input type="time" placeholder="hh:mm AM/PM" id="phone" class="form-control form-control-md"
+                      <label class="form-label" for="startTime">Start Time</label>
+                      <input type="time" placeholder="hh:mm AM/PM" id="starttime" class="form-control form-control-md"
                         [(ngModel)]="updateSlot.startTime" name="startTime" required />
                     </div>
 
 
-                    <!-- address input -->
+                    <!-- end time input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="address">End Time</label>
-                      <input type="time" placeholder="hh:mm AM/PM" id="address" class="form-control form-control-md"
+                      <label class="form-label" for="endTime">End Time</label>
+                      <input type="time" placeholder="hh:mm AM/PM" id="endtime" class="form-control form-control-md"
                         [(ngModel)]="updateSlot.endTime" name="endTime" required />
                     </div>
 
 
-                    <!-- Email input -->
+                    <!-- Available slots input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label-sm" for="email">Available Slots</label>
-                      <input placeholder="10" type="number" id="email" class="form-control form-control-md"
+                      <label class="form-label-sm" for="availableSlot">Available Slots</label>
+                      <input placeholder="10" type="number" id="availSlot" class="form-control form-control-md"
                         [(ngModel)]="updateSlot.availableSlots" name="availableSlots" placeholder="10"
                         required />
                     </div>

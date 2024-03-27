@@ -41,8 +41,7 @@ export class AdminProfileComponent {
           
         },
         error: (err) => {
-          console.log("Error");
-          console.log("Hello");
+          alert(err.error);
           
         },
         complete: () => {
