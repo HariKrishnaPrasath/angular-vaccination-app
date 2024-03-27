@@ -8,7 +8,7 @@ import { AppointmentService } from '../../../service/appointment/appointment.ser
 import { Appointment } from '../../../model/appointment/appointment';
 import { Center } from '../../../model/center/center';
 import { VaccinationStatusDTO } from '../../../model/vaccinationStatusDTO/vaccination-status-dto';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-manage-appointment',
   standalone: true,
@@ -23,10 +23,15 @@ export class ManageAppointmentComponent {
   // newPatient: Patient = new Patient();
 
 
-  constructor(private patientService: PatientService, private appointmentService: AppointmentService) {
+  constructor(private _snackBar: MatSnackBar,private patientService: PatientService, private appointmentService: AppointmentService) {
     let data = JSON.parse(sessionStorage.getItem('Center')!);
     this.center = data;
 
+  }
+  openToast() {
+    this._snackBar.open('Successfully Update', 'Close', {
+      duration: 7000 // 7 seconds
+    });
   }
   addStatus: boolean = false;
   newAppointment: Appointment = new Appointment();
@@ -77,6 +82,8 @@ export class ManageAppointmentComponent {
         next: (res) => {
           console.log(res);
           this.loadAppointmentForCenter();
+          this.openToast();
+          this.newAppointment.vaccineStatus=this.vaccinationStatusDTO.isVaccinated
         },
         error: (err) => {
           console.log(err);

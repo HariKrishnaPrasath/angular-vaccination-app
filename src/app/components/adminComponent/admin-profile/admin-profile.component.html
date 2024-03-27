@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Admin</title>
-    
-</head>
+    <button class="btn btn-info" style="float: right; margin-top: 90px;" (click)="logout()">Log out</button>
+<div class="col-md-4">
+    <img style="width: 30%;" src="https://th.bing.com/th/id/R.19fa7497013a87bd77f7adb96beaf768?rik=144XvMigWWj2bw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fUser-Profile-PNG-High-Quality-Image.png&ehk=%2bat%2brmqQuJrWL609bAlrUPYgzj%2b%2f7L1ErXRTN6ZyxR0%3d&risl=&pid=ImgRaw&r=0">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Admin Profile</h2>
+</div>
+<br>
+<div class="card"></div>
+<br>
 <body>
-    <h3 style="font-style: italic;font-family: 'Times New Roman', Times, serif;margin-left: 10px;color: chocolate;">Welcome Admin</h3>
-    <div class="card">
-        <ul>   
-            <li>
-                <h4>Admin ID: <span class="highlight"> {{details.adminId}}</span></h4>
-            </li>
-            <li>
-                <h4>Admin Name: <span class="highlight"> {{details.adminName}}</span></h4>
-            </li>
-            <li>
-                <h4>Email: <span class="highlight"> {{details.email}}</span></h4>
-            </li>
-            <li>
-                <h4>Phone Number: <span class="highlight"> {{details.phoneNumber}}</span></h4>
-            </li>
-            <li>
-                <h4>Admin Type: <span class="highlight"> {{details.adminType}}</span></h4>
-            </li>
-        </ul>
-    <button style="background-color: green;color: white;width: 100%;" (click)="updateStatus=!updateStatus">UPDATE</button>
-        <br>
-        <button style="background-color: red;color: white;width: 100%;" (click)="delete()">DELETE</button>
+    <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <strong style="color:blue">{{details.adminName}}</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">  
+                                <strong style="color:blue">{{details.email}}</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <strong style="color:blue">{{details.phoneNumber}}</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Admin Type</label>
+                            </div>
+                            <div class="col-md-6">
+                                <strong style="color:blue">{{details.adminType}}</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Admin Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <strong style="color:blue">{{details.adminId}}</strong>
+                            </div>
+                        </div>
+                        <br>
+            </div>
+        </div>
     </div>
-    <div class="overlay" *ngIf="updateStatus==true">
-        <form class="card">
+        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample" style="margin-right: 10px;">Update</button>       
+        <button class="btn btn-danger" (click)="delete()">DELETE</button>
+        <br>
+        <br>
+        <div class="card"></div>
+        <div class="card">
+            
+    <div class="collapse" id="collapseExample">
+        <form>
             <h4 *ngIf="updateAdminSuccess.length>0"style="color: #2ecc71; text-align: center;">{{updateAdminSuccess}}</h4>
             <h4 *ngIf="updateAdminError.length>0"style="color: #e74c3c;text-align: center;">{{updateAdminError}}</h4>
-            <h2 style="text-align: center;">UPDATE ADMIN</h2>
-            <label name="Phone" style="color: cornflowerblue;">Phone No</label>
-            <input type="number" name="Phone" placeholder="{{details.phoneNumber}}"[(ngModel)]="updateDetails.phoneNumber" #phoneRef="ngModel" pattern="[0-10]{10,10}" required/>
-            <div *ngIf="phoneRef.invalid && (phoneRef.touched || phoneRef.dirty)">
-                <p *ngIf="phoneRef.errors?.['required']" class="text-danger">phone number is required, cant be blank.</p>
-                <p *ngIf="phoneRef.errors?.['pattern']" class="text-danger">Only 10 digits allowed.</p>
+            <h2 style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">UPDATE ADMIN</h2>
+            <div class="card"></div>
+            <br>
+
+            <div class="input-group flex-nowrap" style="width: 75%;margin-left: 10px;">
+                <span class="input-group-text" id="addon-wrapping">Phone-No</span>
+                <input name="email" type="text" placeholder="{{details.phoneNumber}}" [(ngModel)]="updateDetails.phoneNumber" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <br>
-            <label name="adminName"style="color: cornflowerblue;">AdminName</label>
-            <input type="text" name="adminName" placeholder="{{details.adminName}}"[(ngModel)]="updateDetails.adminName"  #nameRef="ngModel" pattern="[A-Za-z ]{3,}" required/>
-            <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
-                <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be blank.</p>
-                <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 3 char required.</p>
+            <div class="input-group flex-nowrap"style="width: 75%;margin-left: 10px;">
+                <span class="input-group-text" id="addon-wrapping">Admin Name</span>
+                <input name="email" type="text" placeholder="{{details.adminName}}" [(ngModel)]="updateDetails.adminName" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <br>
-            <label name="password"style="color: cornflowerblue;">Password</label>
-            <input type="password" name="password" placeholder="{{details.password}}"[(ngModel)]="updateDetails.password" #passRef="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required/>
-            <div *ngIf="passRef.invalid && (passRef.touched || passRef.dirty)">
-                <p *ngIf="passRef.errors?.['required']" class="text-danger">password is required, cant be blank.</p>
-                <p *ngIf="passRef.errors?.['pattern']" class="text-danger">minimum 8 characters with atleast 1 lowercase,uppercase and special character.</p>
+            <div class="input-group flex-nowrap"style="width: 75%;margin-left: 10px;">
+                <span class="input-group-text" id="addon-wrapping">Password</span>
+                <input name="email" type="password" placeholder="{{details.password}}" [(ngModel)]="updateDetails.password" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <br>
-            <label name="type"style="color: cornflowerblue;">Admin Type</label>
-            <input type="text" name="type" placeholder="{{details.adminType}}"[(ngModel)]="updateDetails.adminType"required/>
+            <div class="input-group flex-nowrap"style="width: 75%;margin-left: 10px;">
+                <span class="input-group-text" id="addon-wrapping">Admin Type</span>
+                <input name="email" type="text" placeholder="{{details.adminType}}" [(ngModel)]="updateDetails.adminType" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            
             <br>
             <br>
-            <button  style="background-color: green;color: white;width: 100%;" (click)="update()">SUBMIT</button>
+            <button class="btn btn-primary" style="margin-left: 10px;margin-bottom: 10px;" (click)="update()">SUBMIT</button>
+            <button class="btn btn-secondary" style="cursor: pointer;margin-left: 10px;margin-bottom: 10px;" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">Back</button>
             <br>
-            <button style="width: 100%;background-color: lightslategrey;"(click)="updateStatus=false;updateAdminSuccess='';updateAdminError=''">BACK</button>
         </form>
     </div>
+</div>
 </body>
 
 </html>

@@ -1,3 +1,13 @@
+<button style="float: right; margin-top: 70px;" class="btn btn-info"  (click)="logout()">Sign Out</button>
+<div class="col-md-4">
+    <img style="width: 20%;" src="https://th.bing.com/th/id/OIP.OesLvyzDO6AvU_hYUAT4IAHaHa?w=181&h=181&c=7&r=0&o=5&dpr=2&pid=1.7">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">User Profile</h2>
+</div>
+<br>
+<div class="card"></div>
+<br>
+<body>
+<div class="card">
 <div class="container emp-profile" *ngIf="checkBox==false">
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
@@ -37,53 +47,55 @@
                     </div>
                 </div>
             </div><br>
-            <button type="button" id="submit" name="submit" style="margin-right: 10px;" (click)="checkBox=true">Update</button>
-            <button type="button" id="delete" name="delete" (click)="deletePatient()">delete</button>
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample" style="margin-right: 10px;">Update</button>         
+            <button class="btn btn-danger" type="button" id="delete" name="delete" (click)="deletePatient()">Delete</button>
 </div>
-<form *ngIf="checkBox">
-    <div class="divider d-flex align-items-center my-4">
-      </div>
-
-      <!-- Name input -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="name">Name</label>
-        <input type="text" id="name" class="form-control form-control-lg" [(ngModel)]="existingPatient.patientName" name="patientName" 
-          placeholder="name" #nameRef="ngModel" pattern="[ A-Za-z]{3,}" required/>
-      </div>
-      <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
-        <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be blank.</p>
-        <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 3 char required.</p>
-      </div>
-
-      <!-- phone input -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="phone">Phone</label>
-        <input type="text" id="phone" class="form-control form-control-lg" [(ngModel)]="existingPatient.phoneNumber" name="patientPhone"
-          placeholder="phone" #phoneRef="ngModel" pattern="[0-9]{10,10}" required/>
-      </div>
-      <div *ngIf="phoneRef.invalid && (phoneRef.touched || phoneRef.dirty)">
-        <p *ngIf="phoneRef.errors?.['required']" class="text-danger">phone number is required, cant be blank.</p>
-        <p *ngIf="phoneRef.errors?.['pattern']" class="text-danger">Only 10 digits allowed.</p>
-      </div>
-
-      <!-- address input -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="address">Address</label>
-        <input type="text" id="address" class="form-control form-control-lg" [(ngModel)]="existingPatient.address" name="patientAddress"
-          placeholder="address" required/>
-      </div>
-
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="email">Username</label>
-        <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="existingPatient.email" name="patientEmail"
-          placeholder="username/email" required/>
-      </div>
-
-      <div class="text-center text-lg-start mt-4 pt-2">
-        <button type="button" class="btn btn-primary btn-lg"
-          style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="updatePatient()">update</button>
-        <a style="cursor: pointer;margin-left: 10px;" (click)="checkBox=false" class="link-danger" >Cancel</a>
-      </div>
-
-</form>
+</div>
+<div class="collapse" id="collapseExample">
+    <br>
+    <div class="card" style="width: 75%;">
+        <form>
+            <div class="divider d-flex align-items-center my-4">
+              </div>
+              <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;"> Update User Information</h4>
+              <!-- Name input -->
+              <br>
+              <div class="form-outline mb-4" style="margin-left: 10px;">
+                <label class="form-label" for="name">Name</label>
+                <input style="width: 75%;"  type="text" id="name" class="form-control form-control-lg" [(ngModel)]="existingPatient.patientName" name="patientName" 
+                  placeholder="name" required/>
+              </div>
+        
+              <!-- phone input -->
+              <div class="form-outline mb-4" style="margin-left: 10px;">
+                <label class="form-label" for="phone">Phone</label>
+                <input style="width: 75%;"  type="text" id="phone" class="form-control form-control-lg" [(ngModel)]="existingPatient.phoneNumber" name="patientPhone"
+                  placeholder="phone" required/>
+              </div>
+        
+              <!-- address input -->
+              <div class="form-outline mb-4" style="margin-left: 10px;">
+                <label class="form-label" for="address">Address</label>
+                <input style="width: 75%;" type="text" id="address" class="form-control form-control-lg" [(ngModel)]="existingPatient.address" name="patientAddress"
+                  placeholder="address" required/>
+              </div>
+        
+              <!-- Email input -->
+              <div class="form-outline mb-4" style="margin-left: 10px;">
+                <label class="form-label" for="email">Username</label>
+                <input style="width: 75%;"  type="email" id="email" class="form-control form-control-lg" [(ngModel)]="existingPatient.email" name="patientEmail"
+                  placeholder="username/email" required/>
+              </div>
+        
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="button" class="btn btn-primary"
+                  style="margin-left: 10px;margin-bottom: 10px;" (click)="updatePatient()">Update</button>
+                <a style="cursor: pointer;margin-left: 10px;" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample" class="link-danger" >Cancel</a>
+              </div>
+        
+        </form>
+    </div>    
+</div>
+</body>

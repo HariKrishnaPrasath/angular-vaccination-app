@@ -13,55 +13,79 @@
         padding-right: 100px;
     }
 </style>
-
-
-    <br><h5> Add new center:</h5>
-    <div class="ex1">
-        <div *ngIf="message" class="alert alert-success">
-            <p> {{message}}</p>
-        </div>
-        <div *ngIf="errorMessage" class="alert alert-danger">
-            <p> {{errorMessage}}</p>
-        </div>
-        <div>
-            <form #centerForm="ngForm" (ngSubmit)="addCenter()">
-                <div class="form-group">
-                    <label for="name">Center Name</label><br>
-                    <input type="text" id="name" name="name" [(ngModel)]="newCenter.centerName" required #nameField="ngModel" placeholder="Enter center name"><br>
-                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center name is required.</div>
-                </div>
-
-                <label for="address">Address</label><br>
-                <input type="text" id="address" name="address" [(ngModel)]="newCenter.address" placeholder="Enter address"><br>
-
-                <div class="form-group">
-                    <label for="pincode">Pincode</label><br>
-                    <input type="text" id="pincode" name="pincode" [(ngModel)]="newCenter.pincode" required #pincodeField="ngModel" placeholder="Enter pincode"><br>
-                    <div class="req" *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">Center pincode is required.</div>
-                </div>
-                <label for="district">District</label><br>
-                <input type="text" id="district" name="district" [(ngModel)]="newCenter.district" placeholder="Enter District"><br>
-
-                <label for="admin">Admin</label><br>
-                <!-- <input type="text" id="admin" name="admin" [(ngModel)]="newCenter.district" placeholder="Enter District"><br> -->
-                <select class="form-select" [(ngModel)]="selectedAdmin" name="selectedAdmin">
-                    <option *ngFor="let admin of adminList" [ngValue]="admin">{{admin.adminName}}</option>
-                  </select>
-                <label for="state">State</label><br>
-                <input type="text" id="state" name="state" [(ngModel)]="newCenter.state" placeholder="Enter state"><br>
-
-                <label for="contactNo">Contact Number</label><br>
-                <input type="text" id="contactNo" name="contactNo" [(ngModel)]="newCenter.contactNumber" placeholder="Enter contact no"><br>
-                <br>
-                <div class="button-container">
-                    <button type="button" class="btn btn-warning" (click)="goBackToPrevPage()">back</button>
-                    <div class="ex2">
-                        <button type="submit" class="btn btn-success" [disabled]="centerForm.invalid">Add Center</button>
+<img style="width: 20%;float: right;" src="https://gracefellowship.com/wp-content/uploads/2016/06/SRA062616_SermonTitle.jpg">
+<div class="col-md-4">
+    <img style="width: 20%;" src="https://th.bing.com/th/id/OIP.coEWeMFGwDxWH4t4vSjIZQHaHa?w=193&h=193&c=7&r=0&o=5&dpr=2&pid=1.7">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> Add new center</h2>
+</div>
+<br>
+    <div class="card"></div>
+    <br>
+    <div class="card">
+        <br>
+        <h4  style="text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> Centre Details</h4>
+        <br>
+        <div class="card"></div>
+        <br>
+        <div class="ex1">
+            <div *ngIf="message" class="alert alert-success">
+                <p> {{message}}</p>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <p> {{errorMessage}}</p>
+            </div>
+            <div>
+                <form #centerForm="ngForm" (ngSubmit)="addCenter()">
+                   
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Center Name</span>
+                        <input name="name" type="text" [(ngModel)]="newCenter.centerName" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
                     </div>
-                </div>
-            </form>
-        </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Address</span>
+                        <input name="add" type="text" [(ngModel)]="newCenter.address" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Pin-Code</span>
+                        <input name="pin" type="text" [(ngModel)]="newCenter.pincode" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">District</span>
+                        <input name="dis" type="text" [(ngModel)]="newCenter.district" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+
+                    <div class="input-group mb-3" style="width: 75%;">
+                        <label class="input-group-text" for="inputGroupSelect01">Admin</label>
+                        <select name="admin" [(ngModel)]="selectedAdmin" class="form-select" id="inputGroupSelect01">
+                          <option selected>Choose...</option>
+                          <option *ngFor="let admin of adminList" [ngValue]="admin">{{admin.adminName}}</option>
+                        </select>
+                      </div>
+                    <!-- <input type="text" id="admin" name="admin" [(ngModel)]="newCenter.district" placeholder="Enter District"><br> -->
+                    
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">State</span>
+                        <input name="state" type="text" [(ngModel)]="newCenter.state" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Contact Number</span>
+                        <input name="contact" type="text" [(ngModel)]="newCenter.contactNumber" required class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-warning" (click)="goBackToPrevPage()">Back</button>
+                        <div class="ex2">
+                            <button type="submit" class="btn btn-success" [disabled]="centerForm.invalid">Add Center</button>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>    
     </div>
-
-
-
+   

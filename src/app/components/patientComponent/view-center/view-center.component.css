@@ -1,15 +1,29 @@
-.card {
+.card2 {
     display: inline-block;
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
   }
   
-  .card-content {
+  .card-content2 {
     text-align: center;
+    cursor: pointer;
   }
   
   .selected {
     background-color: lightblue; /* Change the background color to your desired color */
   }
-  
+  body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+background-image: url('https://i.pinimg.com/originals/a9/c1/aa/a9c1aa274ca21ea8c636912aea7b2b5e.jpg');
+
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97.5vh;
+}

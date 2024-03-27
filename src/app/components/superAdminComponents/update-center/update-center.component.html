@@ -14,84 +14,83 @@
         padding-right: 100px;
     }
 </style>
-
-
-<div>
-    <br><h5> Update center:</h5>
-    <div class="ex1">
-        <div *ngIf="message" class="alert alert-success">
-            <p> {{message}}</p>
-        </div>
-        <div *ngIf="errorMessage" class="alert alert-danger">
-            <p> {{errorMessage}}</p>
-        </div>
-        <div>
-            <form #centerForm="ngForm">
-                <div class="form-group ">
-                    <label for="id">Center id</label><br>
-                    <input disabled="true" type="number" id="id" name="id" [(ngModel)]="center.centerId" required #nameField="ngModel"><br>
-                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center id is required.</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="name">Center Name</label><br>
-                    <input type="text" id="name" name="name" [(ngModel)]="center.centerName" required #nameField="ngModel"><br>
-                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center name is required.</div>
-                </div>
-
-                <label for="address">Address</label><br>
-                <input type="text" id="address" name="address" [(ngModel)]="center.address"><br>
-
-                <div class="form-group">
-                    <label for="pincode">Pincode</label><br>
-                    <input type="text" id="pincode" name="pincode" [(ngModel)]="center.pincode" required #pincodeField="ngModel" ><br>
-                    <div class="req" *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">Center pincode is required.</div>
-                </div>
-
-                <label for="admin">Admin</label><br>
-                <!-- <input type="text" id="admin" name="admin" [(ngModel)]="newCenter.district" placeholder="Enter District"><br> -->
-                
-                <select class="form-select" [(ngModel)]="center.admin!.adminId" name="selectedAdmin">
-                    <option *ngFor="let admin of adminList" [ngValue]="admin.adminId">{{admin.adminName}}</option>
-                  </select>
-
-                <!--
-                <div class="form-group">
-                    <label for="pincode">Pincode</label><br>
-                    <input type="text" id="pincode" name="pincode" [(ngModel)]="newCenter.pincode" required pattern="^[0-9]{6}$" #pincodeField="ngModel"><br>
-                    <div *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">
-                        <div *ngIf="pincodeField.errors['required']">Pincode is required.</div>
-                        <div *ngIf="pincodeField.errors['pattern']">Pincode must be 6 digits.</div>
+<img style="width: 30%;float: right;" src="https://quotefancy.com/media/wallpaper/3840x2160/978906-Edward-Kennedy-Quote-Health-care-is-a-right-not-a-privilege.jpg">
+<div class="col-md-4">
+    <img style="width: 40%;" src="https://media.istockphoto.com/id/1195034782/vector/update-software-icon-upgrade-application-progress-icon.jpg?s=612x612&w=0&k=20&c=M2LFWa3gyedWvFaEIj9IX3QB5cGD33sD5j90MmKfit4=">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Update Center</h2>
+</div>
+<br>
+<div class="card"></div>
+<br>
+<div class="card">
+    <br>
+    <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">Center Details</h4>
+    <br>
+    <div class="card"></div>
+    <br>
+    <div>
+        <div class="ex1">
+            <div *ngIf="message" class="alert alert-success">
+                <p> {{message}}</p>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <p> {{errorMessage}}</p>
+            </div>
+            <div>
+                <form #centerForm="ngForm">
+                    
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Center Id</span>
+                        <input class="form-control" disabled="true" type="number" id="id" name="id" [(ngModel)]="center.centerId" required #nameField="ngModel"><br>
                     </div>
-                </div>
-                -->
-                <label for="district">District</label><br>
-                <input type="text" id="district" name="district" [(ngModel)]="center.district" #districtRef="ngModel" pattern="[ A-Za-z]{3,}"><br>
-                <div *ngIf="districtRef.invalid && (districtRef.touched || districtRef.dirty)">
-                    <p *ngIf="districtRef.errors?.['required']" class="text-danger">district is required, cant be blank.</p>
-                    <p *ngIf="districtRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 3 char required.</p>
-                  </div>
-                <label for="state">State</label><br>
-                <input type="text" id="state" name="state" [(ngModel)]="center.state" #stateRef="ngModel" pattern="[ A-Za-z]{3,}"><br>
-                <div *ngIf="stateRef.invalid && (stateRef.touched || stateRef.dirty)">
-                    <p *ngIf="stateRef.errors?.['required']" class="text-danger">state is required, cant be blank.</p>
-                    <p *ngIf="stateRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 3 char required.</p>
-                  </div>
-                <label for="contactNo">Contact Number</label><br>
-                <input type="text" id="contactNo" name="contactNo" [(ngModel)]="center.contactNumber" #phoneRef="ngModel" pattern="[0-9]{10,10}">
-                <div *ngIf="phoneRef.invalid && (phoneRef.touched || phoneRef.dirty)">
-                    <p *ngIf="phoneRef.errors?.['required']" class="text-danger">phone number is required, cant be blank.</p>
-                    <p *ngIf="phoneRef.errors?.['pattern']" class="text-danger">Only 10 digits allowed.</p>
-                  </div><br>
-                <br>
-                <div class="button">
-                    <button (click)="clear()" class="btn btn-danger">clear</button>&nbsp;&nbsp;&nbsp;
-                    <button (click)="updateCenter()" class="btn btn-success">Update</button>
-                </div>
-
-            </form>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Center Name</span>
+                        <input class="form-control" type="text" id="name" name="name" [(ngModel)]="center.centerName" required #nameField="ngModel"><br>
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Address</span>
+                        <input class="form-control" type="text" id="address" name="address" [(ngModel)]="center.address"><br>
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Pincode</span>
+                        <input class="form-control" type="text" id="pincode" name="pincode" [(ngModel)]="center.pincode" required #pincodeField="ngModel" ><br>
+                    </div>
+                    <br>
+                      <div class="input-group mb-3" style="width: 75%;">
+                        <label class="input-group-text" for="inputGroupSelect01">Admin</label>
+                        <select name="selectedAdmin" [(ngModel)]="center.admin!.adminId" class="form-select" id="inputGroupSelect01">
+                          <option *ngFor="let admin of adminList" [ngValue]="admin.adminId">{{admin.adminName}}</option>
+                        </select>
+                      </div>
+                      <br>
+                      <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">District</span>
+                        <input class="form-control" type="text" id="district" name="district" [(ngModel)]="center.district" ><br>
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">State</span>
+                        <input class="form-control" type="text" id="state" name="state" [(ngModel)]="center.state"><br>
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap"style="width: 75%;">
+                        <span class="input-group-text" id="addon-wrapping">Contact Number</span>
+                        <input class="form-control" type="text" id="contactNo" name="contactNo" [(ngModel)]="center.contactNumber"><br>
+                    </div>
+                    <br>
+                    <div class="button">
+                        <button (click)="clear()" class="btn btn-warning">Back</button>&nbsp;&nbsp;&nbsp;
+                        <button (click)="updateCenter()" class="btn btn-success">Update</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
         </div>
     </div>
+    
+    
+    
 </div>
-
-

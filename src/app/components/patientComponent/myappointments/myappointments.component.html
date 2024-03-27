@@ -1,4 +1,14 @@
+<img style="float: right;width: 30%;" src="https://appt.widgetfinancial.com/assets/images/appointmentlogo.png">
+<div class="col-md-4">
+  <img style=" width: 40%;" src="https://static.vecteezy.com/system/resources/previews/005/232/517/original/online-appointment-for-medical-assistance-flat-outline-icon-vector.jpg">
+  <h2 style="font-style: italic;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">My Appointments</h2>
+  <br>
+</div>
+<div class="card"></div>
+<br>
+<br>
 <div class="row justify-content-between">
+  
     <div class="col-md-4">
         <form class="example">
             <input type="text" placeholder="Search.." name="search">
@@ -9,6 +19,9 @@
         <button type="button" class="btn btn-primary btn-sm" style="margin-top: 10px;margin-left: 70px;" (click)="bookAppointment()">+ Book Appointment</button>
     </div>
 </div>
+<br>
+<div class="card"></div>
+<br>
 <div *ngIf="appointments.length > 0" style="margin-top: 5%;">
     <table class="table table-hover">
         <thead>
@@ -37,3 +50,4 @@
         </tbody>
       </table>
 </div>
+<h4 *ngIf="appointments.length<1" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">No Bookings.....</h4>

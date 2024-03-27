@@ -18,7 +18,10 @@ export class AdminDashboardComponent {
   
   superAdmin:number=0
   admin:number=0
-  login:number=0
+  login:number=1000
+  cert:number=1000
+  count:number=1000
+  centre:number=1000
   accounts:Admin[]=[]
   chartOptions = {
 	  animationEnabled: true,
@@ -150,7 +153,7 @@ export function updateClock() {
   
   const clockElement = document.getElementById('clock');
   if (clockElement) {
-    clockElement.innerHTML = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+    clockElement.innerHTML = `Date: ${day}/${month}/${year} <br> Time: ${hours}:${minutes}:${seconds}`;
   }
 }
 

@@ -61,11 +61,12 @@ export class LoginComponent {
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          localStorage.setItem("superAdmin",JSON.stringify(this.loginComponent))
+          sessionStorage.setItem("SuperAdmin",JSON.stringify(data))
           this.router.navigateByUrl("/superAdmin/"+this.loginComponent.email)
         },
         error: (err) => {
-          this.loginerror=err.error
+          
+          alert("Error logging in: "+err.error);
         },
         complete: () => {
           console.log("Server completed sending data.");
@@ -94,20 +95,25 @@ export class LoginComponent {
     this.adminService.login(this.loginComponent).subscribe(
       {
         next: (data) => {
-          localStorage.setItem("Admin", JSON.stringify(this.loginComponent))
-          sessionStorage.setItem("Admin", JSON.stringify(data))
+          // sessionStorage.setItem("Admin", JSON.stringify(this.loginComponent.email))
+         sessionStorage.setItem("Admin", JSON.stringify(data))
           this.router.navigateByUrl("/admin/" + this.loginComponent.email)
         },
         error: (err) => {
-          console.log("okok");
-          this.loginerror = err.error
-          console.log(err);
+          alert("Error logging in: "+err.Error);
         },
         complete: () => {
           console.log("Server completed sending data.");
         }
       }
     )
+    }
+    else if(this.loginComponent.email==""||this.loginComponent.password=="")
+    {
+      alert("Please Provide Valid Information")
+    }
+    else{
+      alert("No admin in this email")
     }
   }
   checkBox: Boolean = false

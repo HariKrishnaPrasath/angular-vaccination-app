@@ -5,6 +5,8 @@ import { Vaccine } from '../../../model/vaccine/vaccine';
 import { FormsModule } from '@angular/forms';
 import { CenterService } from '../../../service/center/center.service';
 import { Center } from '../../../model/center/center';
+import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-vaccines',
   standalone: true,
@@ -16,11 +18,16 @@ import { Center } from '../../../model/center/center';
 
 export class AddVaccinesComponent implements OnInit {
   center: Center = new Center();
-  constructor(
-    private vaccineService: VaccineService, private centerService: CenterService
+  constructor(private _snackBar: MatSnackBar,
+    private vaccineService: VaccineService,private location: Location, private centerService: CenterService
   ) {
     this.center = JSON.parse(sessionStorage.getItem('Center')!)
     // this.oldVaccineArray = this.center.vaccineMap!;
+  }
+  openToast() {
+    this._snackBar.open('Vaccine add successfully!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
   }
 
   ngOnInit(): void {
@@ -69,13 +76,17 @@ export class AddVaccinesComponent implements OnInit {
           this.vaccineArray = this.vaccineArray.filter((vac) => {
             return vac.vaccineId != vaccine.vaccineId;
           })
+          this.openToast()
         },
         error: (err) => console.log(err)
 
       }
     )
   }
-
+  goBackToPrevPage(): void {
+    //console.log('vanthuten');
+    this.location.back();
+  }
 }
 
 

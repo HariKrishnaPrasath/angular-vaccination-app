@@ -7,7 +7,7 @@ import { Appointment } from '../../../model/appointment/appointment';
 import { AppointmentService } from '../../../service/appointment/appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CertificateService } from '../../../service/certificate/certificate.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-myappointments',
   standalone: true,
@@ -23,12 +23,17 @@ export class MyappointmentsComponent {
   appointments: Appointment[] = [];
   dateVal?: Date;
 
-  constructor(private patientService: PatientService, private appointmentService: AppointmentService,
+  constructor(private _snackBar: MatSnackBar,private patientService: PatientService, private appointmentService: AppointmentService,
     private router: Router, private route: ActivatedRoute, private certificateService: CertificateService) {
     this.newPatient = JSON.parse(sessionStorage.getItem('Patient')!);
     this.loadAppointmentByPatient();
 
 
+  }
+  openToast() {
+    this._snackBar.open('Successfully generate PDF!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
   }
   loadAppointmentByPatient() {
     this.appointmentService.getAppointmentByPatient(this.newPatient.patientId!).subscribe(
@@ -48,6 +53,7 @@ export class MyappointmentsComponent {
     this.router.navigateByUrl(parentUrl + '/center');
   }
   generateCertificate(bookingId: number) {
+    this.openToast()
     this.certificateService.generateCertificate(bookingId).subscribe((pdfBlob: Blob) => {
       const blob = new Blob([pdfBlob], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);

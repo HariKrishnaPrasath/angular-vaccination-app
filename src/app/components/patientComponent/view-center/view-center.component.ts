@@ -12,7 +12,7 @@ import { Appointment } from '../../../model/appointment/appointment';
 import { Patient } from '../../../model/patient/patient';
 import { AppointmentService } from '../../../service/appointment/appointment.service';
 import { SlotDateSearchPipe } from '../../../pipes/slot-date-search.pipe';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-view-center',
   standalone: true,
@@ -41,7 +41,7 @@ export class ViewCenterComponent {
       this.selectedSlot = slot;
     }
   }
-  constructor(private appointmentService: AppointmentService, private centerService: CenterService,
+  constructor(private _snackBar: MatSnackBar,private appointmentService: AppointmentService, private centerService: CenterService,
     private slotService: SlotService, private router: Router, private route: ActivatedRoute) {
     this.centerId = parseInt(this.route.snapshot.paramMap.get('centerId')!);
 
@@ -56,6 +56,11 @@ export class ViewCenterComponent {
     this.bookAppointment.bookingDate = currentDate.toISOString().slice(0, 10);
 
 
+  }
+  openToast() {
+    this._snackBar.open('Slot Booked!', 'Close', {
+      duration: 7000 // 7 seconds
+    });
   }
   loadSlots() {
     this.slotService.getAllSlotsByCenterId(this.centerId!).subscribe(
@@ -87,6 +92,7 @@ export class ViewCenterComponent {
     this.appointmentService.bookAnAppointment(this.bookAppointment).subscribe(
       {
         next: (res) => {
+          this.openToast()
           console.log(res);
           let parentUrl = this.route.parent?.snapshot.url.join('/')
 

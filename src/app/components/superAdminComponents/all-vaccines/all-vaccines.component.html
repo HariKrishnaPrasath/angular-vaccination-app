@@ -1,12 +1,24 @@
 <!--<p>all-vaccines works!</p>-->
+<img style="float: right;width: 30%;" src="https://th.bing.com/th/id/OIP.vC1plgAmU9PNlqjWJ6a5LwHaEK?w=296&h=180&c=7&r=0&o=5&dpr=2&pid=1.7">
+<div class="col-md-4">
+  <img style="width: 40%;" src="https://th.bing.com/th/id/OIP.I9Fqg85-Gn_8TaaMLKMxoAHaHa?pid=ImgDet&w=199&h=199&c=7&dpr=2">
+  <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage Vaccines</h2>
+</div>
+<br>
+<div class="card"></div>
 <br>
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="search Vaccine" [(ngModel)]="query" aria-label="Vaccine name" aria-describedby="button-addon2">
-    </div>
+  <div class="col-md-4">
+    <form class="example">
+      <input type="text" placeholder="Search.." name="search">
+      <button><i class="fa fa-search"></i></button>
+  </form>   
+ </div>
     <button type="button" class="btn btn-primary" (click)="createVaccine()">+ Create Vaccine</button>
 </div>
-
+<br>
+<div class="card"></div>
+<br>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -15,6 +27,8 @@
         <th scope="col">Manufacturing Date</th>
         <th scope="col">Expiry Date</th>
         <th scope="col">Description</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +39,7 @@
         <td>{{vaccine.expiryDate}}</td>
         <td>{{vaccine.description}}</td>
         <td><button type="button" class="btn btn-primary" (click)="updateVaccine(vaccine)">UpdateVaccine</button></td>
-        <td><button type="button" class="btn btn-primary" (click)="deleteVaccine(vaccine.vaccineId)">DeleteVaccine</button></td>-->
+        <td><button type="button" class="btn btn-primary" (click)="deleteVaccine(vaccine.vaccineId)">DeleteVaccine</button></td>
       </tr>
     </tbody>
   </table>

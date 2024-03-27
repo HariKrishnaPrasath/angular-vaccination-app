@@ -13,17 +13,10 @@ object-fit: fill;" src="https://blogassets.leverageedu.com/blog/wp-content/uploa
     
     <form *ngIf="checkBox==false">
       <h1 style="font-family: monospace;">Login</h1><br>
-        <input type="text" placeholder="Username/Email" name="email" required="Please enter the email" [(ngModel)]="email" required>
-        <input type="password" placeholder="Password" name="password" required="Please provide password" [(ngModel)]="password" #passRef="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
-        <div *ngIf="passRef.invalid && (passRef.touched || passRef.dirty)">
-          <p *ngIf="passRef.errors?.['required']" class="text-danger">password is required, cant be blank.</p>
-          <p *ngIf="passRef.errors?.['pattern']" class="text-danger">minimum 8 characters with atleast 1 lowercase,uppercase and special character.</p>
-        </div>
+        <input type="text" placeholder="Username/Email" name="email" [(ngModel)]="email"/>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="password"/>
         <button (click)="loginin()">Login</button>
     </form>
-    <p style="color: red;">
-      {{loginerror}}
-    </p>
 </div>
 <div class="news">
 

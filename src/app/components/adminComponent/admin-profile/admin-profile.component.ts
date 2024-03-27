@@ -4,7 +4,7 @@ import { AdminService } from '../../../service/admin/admin.service';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-admin-profile',
   standalone: true,
@@ -24,7 +24,8 @@ export class AdminProfileComponent {
   // var obj=localStorage.getItem("Admin");
   // console.log(obj);
   // details: Admin = new Admin(0, '', '', '', '', '')
-  constructor(private adminService: AdminService,private router: Router) {
+  constructor(private adminService: AdminService,private router: Router,private _snackBar: MatSnackBar
+    ) {
 
     var obj = sessionStorage.getItem("Admin");
     var data;
@@ -50,6 +51,12 @@ export class AdminProfileComponent {
       }
     )
   }
+  
+openToast() {
+  this._snackBar.open('Admin update successfully!', 'Close', {
+    duration: 7000 // 7 seconds
+  });
+}
   delete() {
     if (confirm("Do you want to Delete Account.Once you deleted you can't get back"))
       this.adminService.deleteAdmin(this.details.adminId!).subscribe(
@@ -72,11 +79,15 @@ export class AdminProfileComponent {
   }
   update() {
     this.updateDetails.email=this.details.email
+    if(this.updateDetails.adminId==0||this.updateDetails.adminName==""||this.updateDetails.adminType==""||this.updateDetails.email==""||this.updateDetails.password==""||this.updateDetails.phoneNumber==""){
+      alert("please provide valid information")
+    }
+    else
     this.adminService.updateAdmin(this.updateDetails).subscribe(
       {
         next: (data) => {
+          this.openToast()
           this.updateAdminError = ''
-          this.updateAdminSuccess = "Admin Updated Successfully"
           console.log(data)
           this.adminService.getAdminByEmail(data.email).subscribe(
             {

@@ -14,8 +14,19 @@
         padding-right: 100px;
     }
 </style>
-<div>
-    <br><h5> Update center:</h5>
+<img style="float: right;width: 20%;" src="https://th.bing.com/th/id/OIP.8M66OwYlmcdBsG-Q07LUSgHaEo?rs=1&pid=ImgDetMain">
+<div class="col-md-4">
+    <img style="width: 30%;" src="https://th.bing.com/th/id/OIP.IGD9u8wt4loA2kSc1HccNAHaHa?pid=ImgDet&w=199&h=199&c=7&dpr=2">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Manage Center</h2>
+</div>
+<br>
+<div class="card"></div>
+<br>
+<div class="card">
+    <br>
+    <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">Center Details</h4>
+    <div class="card"></div>
+    <br>
     <div class="ex1">
         <div *ngIf="message" class="alert alert-success">
             <p> {{message}}</p>
@@ -24,52 +35,49 @@
             <p> {{errorMessage}}</p>
         </div>
         <div>
+            
             <form #centerForm="ngForm">
-                <div class="form-group ">
-                    <label for="id">Center id</label><br>
-                    <input disabled="true" type="number" id="id" name="id" [(ngModel)]="center.centerId" required #nameField="ngModel"><br>
-                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center id is required.</div>
+                <br>
+                <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">Center Id</span>
+                    <input class="form-control"  disabled="true" type="number" id="id" name="id" [(ngModel)]="center.centerId" required #nameField="ngModel"><br>
+                  </div>
+                  <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">Center Name</span>
+                    <input class="form-control" type="text" id="name" name="name" [(ngModel)]="center.centerName" required #nameField="ngModel"><br>
+                  </div>
+                  <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">Address</span>
+                    <input class="form-control" type="text" id="address" name="address" [(ngModel)]="center.address"><br>
+                </div>
+                  <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">Pin-code</span>
+                    <input class="form-control" type="text" id="pincode" name="pincode" [(ngModel)]="center.pincode" required #pincodeField="ngModel" ><br>
+                  </div>
+                  <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">District</span>
+                    <input class="form-control" type="text" id="district" name="district" [(ngModel)]="center.district" ><br>
+                </div>
+                <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">State</span>
+                    <input class="form-control" type="text" id="state" name="state" [(ngModel)]="center.state"><br>
+                </div>
+                <br>
+                  <div class="input-group flex-nowrap" style="width: 75%;">
+                    <span class="input-group-text" id="addon-wrapping">Contact-No</span>
+                    <input class="form-control" type="text" id="contactNo" name="contactNo" [(ngModel)]="center.contactNumber"><br>
                 </div>
 
-                <div class="form-group">
-                    <label for="name">Center Name</label><br>
-                    <input type="text" id="name" name="name" [(ngModel)]="center.centerName" required #nameField="ngModel"><br>
-                    <div class ="req" *ngIf="nameField.invalid && nameField.touched" class="alert alert-danger">Center name is required.</div>
-                </div>
-
-                <label for="address">Address</label><br>
-                <input type="text" id="address" name="address" [(ngModel)]="center.address"><br>
-
-                <div class="form-group">
-                    <label for="pincode">Pincode</label><br>
-                    <input type="text" id="pincode" name="pincode" [(ngModel)]="center.pincode" required #pincodeField="ngModel" ><br>
-                    <div class="req" *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">Center pincode is required.</div>
-                </div>
-
-                <!--
-                <div class="form-group">
-                    <label for="pincode">Pincode</label><br>
-                    <input type="text" id="pincode" name="pincode" [(ngModel)]="newCenter.pincode" required pattern="^[0-9]{6}$" #pincodeField="ngModel"><br>
-                    <div *ngIf="pincodeField.invalid && pincodeField.touched" class="alert alert-danger">
-                        <div *ngIf="pincodeField.errors['required']">Pincode is required.</div>
-                        <div *ngIf="pincodeField.errors['pattern']">Pincode must be 6 digits.</div>
-                    </div>
-                </div>
-                -->
-                <label for="district">District</label><br>
-                <input type="text" id="district" name="district" [(ngModel)]="center.district" ><br>
-
-                <label for="state">State</label><br>
-                <input type="text" id="state" name="state" [(ngModel)]="center.state"><br>
-
-                <label for="contactNo">Contact Number</label><br>
-                <input type="text" id="contactNo" name="contactNo" [(ngModel)]="center.contactNumber"><br>
                 <br>
                 <div class="button">
-                    <button (click)="clear()" class="btn btn-danger">clear</button>&nbsp;&nbsp;&nbsp;
                     <button (click)="updateCenter()" class="btn btn-success">Update</button>
                 </div>
-
+                <br>
             </form>
         </div>
     </div>
