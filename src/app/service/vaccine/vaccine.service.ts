@@ -19,7 +19,7 @@ export class VaccineService {
     return this.httpClient.post("http://localhost:8090/vaccine/create", vaccine);
   }
   updateVaccine(vaccine?: Vaccine): Observable<any> {
-    return this.httpClient.put("http://localhost:8090/vaccine/update", vaccine);
+    return this.httpClient.put(`http://localhost:8090/vaccine/update/${vaccine?.vaccineId}`, vaccine);
   }
   getById(id?:string):Observable<any>{
     return this.httpClient.get("http://localhost:8090/vaccine/"+id)

@@ -61,7 +61,7 @@
                     <br>
                       <div class="input-group mb-3" style="width: 75%;">
                         <label class="input-group-text" for="inputGroupSelect01">Admin</label>
-                        <select name="selectedAdmin" [(ngModel)]="center.admin!.adminId" class="form-select" id="inputGroupSelect01">
+                        <select name="selectedAdmin" [(ngModel)]="center.admin!.adminId " class="form-select" id="inputGroupSelect01">
                           <option *ngFor="let admin of adminList" [ngValue]="admin.adminId">{{admin.adminName}}</option>
                         </select>
                       </div>
