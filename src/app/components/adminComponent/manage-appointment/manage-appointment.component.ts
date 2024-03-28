@@ -95,12 +95,19 @@ export class ManageAppointmentComponent {
   name:string=""
   dup:Appointment[]=[]
   search(){
+    if(this.name=="")
+    {
+      this.loadAppointmentForCenter()
+    }
     for(let i of this.appointments){
       if(i.patient?.patientName?.toLowerCase().includes(this.name.toLowerCase())){
         this.dup.push(i)
       }
     }
+
+    this.name=""
     this.appointments=this.dup
+    this.dup=[]
   }
 }
 

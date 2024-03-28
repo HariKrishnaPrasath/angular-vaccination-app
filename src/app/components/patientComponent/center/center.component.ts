@@ -47,14 +47,22 @@ export class CenterComponent {
   name:string=""
   dup:Center[]=[]
   search(){
+    if(this.name=="")
+    {
+      this.loadAllCenter()
+    }
     for(let i of this.centers)
     {
-      if(i.centerName?.toLowerCase().includes(this.name.toLowerCase()))
+      console.log("1")
+      if(i.centerName?.toUpperCase().includes(this.name.toUpperCase()))
       {
+        
         this.dup.push(i)
       }
     }
+    this.name=""
     this.centers=this.dup
+    this.dup=[]
   }
 }
 // query: any;

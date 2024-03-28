@@ -96,7 +96,10 @@ export class CreateSlotComponent {
   name:string=""
   slotDup:Slot[]=[]
   search(){
-    
+    if(this.name=="")
+    {
+      this.loadAllSlots()
+    }
     for(let i of this.slots)
     {
       if(this.name == i.date)
@@ -105,7 +108,9 @@ export class CreateSlotComponent {
         console.log(i)
       }
     }
+    this.name=""
     this.slots=this.slotDup
+    this.slotDup=[]
   }
 
 }

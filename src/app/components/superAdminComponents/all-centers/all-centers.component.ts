@@ -89,6 +89,23 @@ export class AllCentersComponent {
   name:string=""
   dup:Center[]=[]
   search(){
+    if(this.name=="")
+    {
+      this.centerService.getAllCenters().subscribe({
+        next: (data) => {
+          console.log(data);
+          this.centerArray=data;
+        },
+        error: (err) => {
+          console.log(err);
+          this.errorMessage = "Could't Load Centers";
+          this.message = "";
+        },
+        complete: () => {
+          console.log("Server completed sending data.");
+        }
+      }); 
+    }
     for(let i of this.centerArray){
       if(i.centerName?.toUpperCase().includes(this.name.toUpperCase()))
       {
@@ -96,6 +113,8 @@ export class AllCentersComponent {
         this.dup.push(i)
       }
     }
+    this.name=""
     this.centerArray=this.dup
+    this.dup=[]
   }
 }
