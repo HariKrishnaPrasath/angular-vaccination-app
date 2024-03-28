@@ -65,6 +65,9 @@ export class AllVacsComponent implements OnInit {
   name:string=""
   dup:Vaccine[]=[]
   search(){
+    if(this.name==""){
+      this.loadVaccinesInCenter()
+    }
     for(let i of this.vaccineArray)
     {
       if(i.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
@@ -72,6 +75,8 @@ export class AllVacsComponent implements OnInit {
         this.dup.push(i)
       }
     }
+    this.name=""
     this.vaccineArray=this.dup
+    this.dup=[]
   }
 }

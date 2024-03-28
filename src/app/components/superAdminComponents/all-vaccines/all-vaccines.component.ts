@@ -78,6 +78,24 @@ export class AllVaccinesComponent {
   name:string=""
   dup:Vaccine[]=[]
   search(){
+    if(this.name=="")
+    {
+      this.vaccineService.getAllVaccine().subscribe({
+        next: (data) => {
+          console.log(data);
+          this.vaccineArray=data;
+        },
+        error: (err) => {
+          console.log(err);
+          this.errorMessage = "Could't Load Vaccines";
+          this.message = "";
+        },
+        complete: () => {
+          console.log("Server completed sending data.");
+  
+        }
+      }); 
+    }
     for(let i of this.vaccineArray)
     {
       if(i.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
@@ -85,7 +103,9 @@ export class AllVaccinesComponent {
         this.dup.push(i)
       }
     }
+    this.name=""
     this.vaccineArray=this.dup
+    this.dup=[]
   }
 }
 

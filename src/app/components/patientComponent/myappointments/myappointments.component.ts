@@ -63,13 +63,19 @@ export class MyappointmentsComponent {
   name:string=""
   dup:Appointment[]=[]
   search(){
+    if(this.name=="")
+    {
+      this.loadAppointmentByPatient()
+    }
     for(let i of this.appointments)
     {
-      if(i.vaccine?.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
+      if(i.bookingDate==this.name)
       {
         this.dup.push(i)
       }
     }
+    this.name=""
     this.appointments=this.dup
+    this.dup=[]
   }
 }
