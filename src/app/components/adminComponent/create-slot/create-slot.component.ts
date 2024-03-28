@@ -12,7 +12,7 @@ import { SlotDateSearchPipe } from '../../../pipes/slot-date-search.pipe';
 @Component({
   selector: 'app-create-slot',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLinkActive, SlotDateSearchPipe,DatePipe],
+  imports: [CommonModule, FormsModule, RouterLinkActive],
   templateUrl: './create-slot.component.html',
   styleUrl: './create-slot.component.css'
 })
@@ -24,7 +24,7 @@ export class CreateSlotComponent {
   newSlot: Slot = new Slot();
   centerId?: number;
   center: Center = new Center();
-  constructor(private slotService: SlotService, private router: Router,private datePipe:DatePipe) {
+  constructor(private slotService: SlotService, private router: Router) {
     let data, obj;
     obj = sessionStorage.getItem('Center');
     data = JSON.parse(obj!);
@@ -93,6 +93,19 @@ export class CreateSlotComponent {
     const today = new Date();
     return new Date(today.toDateString() + ' ' + time);
   }
-  
+  name:string=""
+  slotDup:Slot[]=[]
+  search(){
+    
+    for(let i of this.slots)
+    {
+      if(this.name == i.date)
+      {
+        this.slotDup.push(i)
+        console.log(i)
+      }
+    }
+    this.slots=this.slotDup
+  }
 
 }

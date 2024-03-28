@@ -44,6 +44,18 @@ export class CenterComponent {
 
     this.router.navigateByUrl(parentUrl + '/viewCenter/' + centerId);
   }
+  name:string=""
+  dup:Center[]=[]
+  search(){
+    for(let i of this.centers)
+    {
+      if(i.centerName?.toLowerCase().includes(this.name.toLowerCase()))
+      {
+        this.dup.push(i)
+      }
+    }
+    this.centers=this.dup
+  }
 }
 // query: any;
 // message: string = "";

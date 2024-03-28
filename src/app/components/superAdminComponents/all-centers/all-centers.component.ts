@@ -86,4 +86,16 @@ export class AllCentersComponent {
     this.router.navigateByUrl(this.parentUrl + '/updateCenter/' + center.centerId);
 
   }
+  name:string=""
+  dup:Center[]=[]
+  search(){
+    for(let i of this.centerArray){
+      if(i.centerName?.toUpperCase().includes(this.name.toUpperCase()))
+      {
+        
+        this.dup.push(i)
+      }
+    }
+    this.centerArray=this.dup
+  }
 }

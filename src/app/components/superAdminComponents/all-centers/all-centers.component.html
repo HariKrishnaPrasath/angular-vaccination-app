@@ -9,8 +9,8 @@
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
     <div class="col-md-4">
       <form class="example">
-        <input type="text" placeholder="Search.." name="search">
-        <button><i class="fa fa-search"></i></button>
+        <input type="text" placeholder="Search.." name="search" [(ngModel)]="name">
+        <button (click)="search()"><i class="fa fa-search"></i></button>
     </form>   
    </div>
     <button type="button" style="margin-right: 60px;" class="btn btn-primary" (click)="addCenter()">+ Add center</button>
