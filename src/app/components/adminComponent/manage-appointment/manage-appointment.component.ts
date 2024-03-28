@@ -92,5 +92,15 @@ export class ManageAppointmentComponent {
       }
     )
   }
+  name:string=""
+  dup:Appointment[]=[]
+  search(){
+    for(let i of this.appointments){
+      if(i.patient?.patientName?.toLocaleLowerCase==this.name.toLocaleLowerCase){
+        this.dup.push(i)
+      }
+    }
+    this.appointments=this.dup
+  }
 }
 

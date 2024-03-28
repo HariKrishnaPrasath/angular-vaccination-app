@@ -9,8 +9,8 @@
 <div class="row justify-content-between">
     <div class="col-md-4">
         <form class="example">
-            <input type="text" placeholder="Search.." name="search">
-            <button><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="Search.." name="search" [(ngModel)]="name">
+            <button><i class="fa fa-search" (click)="search()"></i></button>
         </form>
     </div>
 </div>
@@ -76,6 +76,6 @@
   </div>
   </div>
 </div>
-
+<h4 *ngIf="appointments.length<1" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;">No Appointments...</h4>
 
 <router-outlet></router-outlet>

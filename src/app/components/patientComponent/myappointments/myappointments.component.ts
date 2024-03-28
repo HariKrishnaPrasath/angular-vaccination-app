@@ -60,4 +60,16 @@ export class MyappointmentsComponent {
       window.open(url);
     });
   }
+  name:string=""
+  dup:Appointment[]=[]
+  search(){
+    for(let i of this.appointments)
+    {
+      if(i.vaccine?.vaccineName?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      {
+        this.dup.push(i)
+      }
+    }
+    this.appointments=this.dup
+  }
 }

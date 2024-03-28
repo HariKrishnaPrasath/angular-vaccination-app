@@ -86,4 +86,15 @@ export class AllCentersComponent {
     this.router.navigateByUrl(this.parentUrl + '/updateCenter/' + center.centerId);
 
   }
+  name:string=""
+  dup:Center[]=[]
+  search(){
+    for(let i of this.centerArray){
+      if(i.centerName?.toLocaleLowerCase==this.name.toLocaleLowerCase||i.district?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      {
+        this.dup.push(i)
+      }
+    }
+    this.centerArray=this.dup
+  }
 }

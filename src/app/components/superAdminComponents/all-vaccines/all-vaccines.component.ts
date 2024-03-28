@@ -75,6 +75,18 @@ export class AllVaccinesComponent {
   createVaccine() {
     this.router.navigateByUrl('superAdmin/' + this.email + '/createVac');
   }
+  name:string=""
+  dup:Vaccine[]=[]
+  search(){
+    for(let i of this.vaccineArray)
+    {
+      if(i.vaccineName?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      {
+        this.dup.push(i)
+      }
+    }
+    this.vaccineArray=this.dup
+  }
 }
 
 
