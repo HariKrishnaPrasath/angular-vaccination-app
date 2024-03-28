@@ -48,6 +48,11 @@ export class HomeComponent {
   logout() : void {
     this.router.navigateByUrl('');
   }
+  bookvacc():void{
+	let parentUrl = this.route.parent?.snapshot.url.join('/')
+
+	this.router.navigateByUrl(parentUrl+'/appointment')
+  }
   bookAppointment() {
     let parentUrl = this.route.parent?.snapshot.url.join('/')
 

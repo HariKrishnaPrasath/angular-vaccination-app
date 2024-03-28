@@ -75,7 +75,9 @@ export class MyappointmentsComponent {
       }
     }
     this.name=""
+    this.name=""
     this.appointments=this.dup
+    this.dup=[]
     this.dup=[]
   }
 }

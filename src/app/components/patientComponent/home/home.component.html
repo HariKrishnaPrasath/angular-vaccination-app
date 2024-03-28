@@ -16,39 +16,20 @@
 <h4 style="text-align: right;margin-top: -35px;margin-right: 80px;">Vaccinated</h4>
 </div>
 <div class="card">
-    <h3 style="text-align: center;color: white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Book your appointments</h3>
+    <h3 style="text-align: center;color: white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">choose your center</h3>
     <p style="text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: white;">
-        Once you booking appointments and admin approved your booking then you can get your certificate
+        Get vaccinated by choosing the center here 
     </p>
     <br>
-    <button (click)="bookAppointment()" style="width: 100%;text-align: center; float: right; size: 200px;border-radius: 20px;">Book Appointments</button>
+    <button (click)="bookAppointment()" style="width: 100%;text-align: center; float: right; size: 200px;border-radius: 20px;">choose center</button>
 </div>
 <div class="card">
-    <h3 style="text-align: center;color: white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Side Effect</h3>
+    <h3 style="text-align: center;color: white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">My Appointments</h3>
     
     <p style="text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: white;">
-        If you have experienced any side effect after vaccination, it can be reported in this application using your registered mobile number.
-    </p>
+        Once you booking appointments and admin approved your booking then you can get your certificate    </p>
     <button style="width: 100%;text-align: center; float: right; size: 200px;border-radius: 20px; "type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-    aria-expanded="false" aria-controls="collapseExample">Report Us</button>
-</div>
-<div class="collapse" id="collapseExample">
-    <div class="card" style="background-color: aliceblue;width: 100%;">
-        <h5>Choose Severity level and enter details</h5>
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-danger" (click)="setSeverity('Critical',1)" [disabled]="isDisabled1">Critical</button>
-            <button type="button" class="btn btn-warning" (click)="setSeverity('Medium',2)" [disabled]="isDisabled2">Medium</button>
-            <button type="button" class="btn btn-success" (click)="setSeverity('Slight',3)" [disabled]="isDisabled3">Slight</button>
-          </div>
-          <br>
-          <label name="phone">Phone Number</label>
-        <input type="number" name="phone" placeholder="Phone number" [(ngModel)]="phone"><br>
-        <label for="desc">Description</label>
-        <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="description"></textarea>
-        <br>
-        <button class="btn btn-primary" (click)="submit()">Submit</button>
-    </div>
-    
+    aria-expanded="false" aria-controls="collapseExample" (click)="bookvacc()">Book</button>
 </div>
 <div style="text-align: center;background-color: #474e5d; width: 100%;color: white;">
     <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Statistics</h2>

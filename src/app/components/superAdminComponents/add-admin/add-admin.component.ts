@@ -66,6 +66,7 @@ openToast() {
 
   adminDup:Admin[]=[]
   addAdmin(){
+    console.log(this.adminDetails);
     if(this.adminDetails.adminName==""||this.adminDetails.adminType==""||this.adminDetails.email==""||this.adminDetails.password==""||this.adminDetails.phoneNumber==""){
       alert("please provide valid information")
     }

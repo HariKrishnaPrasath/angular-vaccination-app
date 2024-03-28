@@ -46,6 +46,7 @@ export class CenterComponent {
   }
   name:string=""
   dup:Center[]=[]
+  query:string=""
   search(){
     if(this.name=="")
     {
@@ -61,7 +62,9 @@ export class CenterComponent {
       }
     }
     this.name=""
+    this.name=""
     this.centers=this.dup
+    this.dup=[]
     this.dup=[]
   }
 }

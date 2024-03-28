@@ -98,7 +98,7 @@ export class ViewCenterComponent {
 
           this.router.navigateByUrl(parentUrl + '/center');
         },
-        error: (err) => console.log(err.error)
+        error: (err) => alert("no slots selected")
 
       }
     )
