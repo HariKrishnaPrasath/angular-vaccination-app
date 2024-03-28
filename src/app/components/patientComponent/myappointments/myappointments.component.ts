@@ -65,7 +65,7 @@ export class MyappointmentsComponent {
   search(){
     for(let i of this.appointments)
     {
-      if(i.vaccine?.vaccineName?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      if(i.vaccine?.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
       {
         this.dup.push(i)
       }

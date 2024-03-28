@@ -67,7 +67,7 @@ export class AllVacsComponent implements OnInit {
   search(){
     for(let i of this.vaccineArray)
     {
-      if(this.name.toLocaleLowerCase==i.vaccineName?.toLocaleLowerCase)
+      if(i.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
       {
         this.dup.push(i)
       }

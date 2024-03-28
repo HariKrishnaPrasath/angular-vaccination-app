@@ -49,7 +49,7 @@ export class CenterComponent {
   search(){
     for(let i of this.centers)
     {
-      if(i.centerName?.toLocaleLowerCase==this.name.toLocaleLowerCase||i.district?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      if(i.centerName?.toLowerCase().includes(this.name.toLowerCase()))
       {
         this.dup.push(i)
       }

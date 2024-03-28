@@ -80,7 +80,7 @@ export class AllVaccinesComponent {
   search(){
     for(let i of this.vaccineArray)
     {
-      if(i.vaccineName?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      if(i.vaccineName?.toLowerCase().includes(this.name.toLowerCase()))
       {
         this.dup.push(i)
       }

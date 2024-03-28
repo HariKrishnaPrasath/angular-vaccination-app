@@ -90,8 +90,9 @@ export class AllCentersComponent {
   dup:Center[]=[]
   search(){
     for(let i of this.centerArray){
-      if(i.centerName?.toLocaleLowerCase==this.name.toLocaleLowerCase||i.district?.toLocaleLowerCase==this.name.toLocaleLowerCase)
+      if(i.centerName?.toUpperCase().includes(this.name.toUpperCase()))
       {
+        
         this.dup.push(i)
       }
     }
